@@ -36,8 +36,8 @@ class mjml2cr
 
 	static addStyles(data)
 	{
-		let style_tag = '<style type="text/css">';
-		let pos = data.indexOf(style_tag)+style_tag.length;
+		let style_tag = '<style type="text/css">',
+			pos = data.indexOf(style_tag)+style_tag.length;
 		data = data.substring(0, pos) + ' .mj-container { max-width:600px;margin:0 auto; } ' + data.substring(pos);
 		return data;
 	}
