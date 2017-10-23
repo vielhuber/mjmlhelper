@@ -9,7 +9,8 @@ mkdir test
 cd test
 npm install mjml2cr --save
 cp mjml2cr.example.js mjml2cr.js
-vi mjml2cr.js # edit mail credentials
+# now edit your test mail credentials
+vi mjml2cr.js
 ```
 
 ## Usage
@@ -19,6 +20,6 @@ vi mjml2cr.js # edit mail credentials
 ./node_modules/.bin/mjml index.mjml -o index.html
 # send out a test mail (local images are automatically inlined)
 node mjml2cr.js mail
-# create a ready-to-import zip file for cleverreach
+# create a ready-to-import zip file for CleverReach
 node mjml2cr.js convert
 ```
