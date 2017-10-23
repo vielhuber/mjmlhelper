@@ -2,21 +2,21 @@ class mjml2cr
 {
 	static convert()
 	{
-		fs.copySync('index.html', 'index-original.html', { overwrite: true });
-		let data = fs.readFileSync('index.html', 'utf-8');
+		fs.copySync(process.cwd()+'/index.html', process.cwd()+'/index-original.html', { overwrite: true });
+		let data = fs.readFileSync(process.cwd()+'/index.html', 'utf-8');
 		data = this.modifyHtml(data);
-		fs.writeFileSync('index.html', data, 'utf-8');
-		fs.copySync('index.html', 'index-converted.html', { overwrite: true });
+		fs.writeFileSync(process.cwd()+'/index.html', data, 'utf-8');
+		fs.copySync(process.cwd()+'/index.html', process.cwd()+'/index-converted.html', { overwrite: true });
 		this.zipFolder(() =>
 		{
-			fs.moveSync('index-original.html', 'index.html', { overwrite: true });
-			fs.removeSync('index-original.html');
+			fs.moveSync(process.cwd()+'/index-original.html', process.cwd()+'/index.html', { overwrite: true });
+			fs.removeSync(process.cwd()+'/index-original.html');
 		});
 	}
 
 	static zipFolder(callback)
 	{
-		let output = fs.createWriteStream(__dirname+'/index.zip'),
+		let output = fs.createWriteStream(process.cwd()+'/index.zip'),
 			archive = archiver('zip', { zlib: { level: 9 } });
 		archive.pipe(output);
 		archive.file('index.html');
@@ -128,7 +128,7 @@ class mjml2cr
 
 	static mail()
 	{
-		let config = require('./mjml2cr.json'),
+		let config = require(process.cwd()+'/mjml2cr.json'),
 			transporter = nodemailer.createTransport({
 		        host: config.smtp,
 		        port: config.port,
@@ -143,7 +143,7 @@ class mjml2cr
 		        to: config.to,
 		        subject: 'Test E-Mail ✔',
 		        generateTextFromHTML: true,
-		        html: fs.readFileSync('index-converted.html', 'utf-8'),
+		        html: fs.readFileSync(process.cwd()+'/index.html', 'utf-8'),
 		        attachments: []
 		    }
 
