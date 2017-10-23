@@ -5,21 +5,34 @@ mjml2cr is a simple converter that makes html files from [mjml](https://mjml.io)
 ## Installation
 
 ```
-mkdir test
-cd test
 npm install mjml2cr --save
-cp mjml2cr.example.js mjml2cr.js
-# now edit your test mail credentials
+```
+
+## Setup
+
+# create a tiny mail credential config file
+```
 vi mjml2cr.js
+```
+```json
+{
+	"from": "from@tld.com",
+	"to": "to@tld.com",
+	"smtp": "your.hostname.com",
+	"username": "your-username",
+	"password": "your-password",
+	"port": 465,
+	"ssl": "tls"
+}
 ```
 
 ## Usage
 
 ```
 # do your daily mjml stuff
-./node_modules/.bin/mjml index.mjml -o index.html
+node ./node_modules/.bin/mjml index.mjml -o index.html
 # send out a test mail (local images are automatically inlined)
-node mjml2cr.js mail
+node ./node_modules/mjml2cr/mjml2cr.js mail
 # create a ready-to-import zip file for CleverReach
-node mjml2cr.js convert
+node ./node_modules/mjml2cr/mjml2cr.js convert
 ```
