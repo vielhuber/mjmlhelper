@@ -1,0 +1,7 @@
+*
+!.gitignore
+!package.json
+!mjml2cr.js
+!mjml2cr.example.json
+!index.mjml
+!test.png

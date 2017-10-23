@@ -1,0 +1,19 @@
+{
+  "name": "mjml2cr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mjml2cr.js",
+  "dependencies": {
+    "archiver": "^2.1.0",
+    "fs-extra": "^4.0.2",
+    "mjml": "^3.3.5",
+    "nodemailer": "^4.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "David Vielhuber <david@vielhuber.de>",
+  "license": "ISC"
+}
