@@ -17,17 +17,17 @@ touch mjml2cr.json
 with the following content:
 ```json
 {
-	"from": "from@tld.com",
-	"to": "to@tld.com",
-	"smtp": "your.hostname.com",
-	"username": "your-username",
-	"password": "your-password",
-	"port": 465,
-	"ssl": "tls"
+    "from": "from@tld.com",
+    "to": "to@tld.com",
+    "smtp": "your.hostname.com",
+    "username": "your-username",
+    "password": "your-password",
+    "port": 465,
+    "ssl": "tls"
 }
 ```
 
-## Usage
+## usage
 
 ```
 # do your daily mjml stuff
