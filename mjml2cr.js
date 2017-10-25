@@ -28,9 +28,9 @@ class mjml2cr
     static modifyHtml(data)
     {
         data = this.addStyles(data);
+        data = this.moveImagesFolder(data);
         data = this.attachLoops(data);
         data = this.attachHtmlTags(data);
-        data = this.moveImagesFolder(data);
         return data;
     }
 
@@ -44,27 +44,20 @@ class mjml2cr
 
     static attachLoops(data)
     {
-        let loop_begin = '\n\n\n\n<!--#loopitem#-->\n\n\n\n';
-        let loop_end = '\n\n\n\n<!--#/loopitem#-->\n\n\n\n';
-        let positions = this.findAllPositions('max-width:', data);
-        let shift = 0;
-        positions.forEach((positions__value) =>
-        {
-            let mid = positions__value+shift;
-            if( data.lastIndexOf('<div', mid) === -1 || data.indexOf('</div>', mid) === -1 ) { return; }
-            let begin = this.loopDetermineBegin(data, mid);
-            data = data.substring(0, begin) + loop_begin + data.substring(begin);
-            mid += loop_begin.length;
-            let end = this.loopDetermineEnd(data, mid);
-            data = data.substring(0, end) + loop_end + data.substring(end);
-            shift += loop_begin.length+loop_end.length;
-        });
+        let pos;
 
-        // attach outer loop
-        let loop_first = data.indexOf('<!--#loopitem#-->');
-        data = data.substring(0, loop_first)+'<!--#loop #-->'+data.substring(loop_first);
-        let loop_last = data.lastIndexOf('<!--#/loopitem#-->')+'<!--#/loopitem#-->'.length;
-        data = data.substring(0, loop_last)+'<!--#/loop#-->'+data.substring(loop_last);
+        // mid
+        data = data.replace(/<!\[endif\]-->(\s*)(\n*)(\s*)<!--\[if mso \| IE\]>/g, '<![endif]-->\n\n\n\n<!--#/loopitem#--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]>');
+
+        // last
+        pos = data.lastIndexOf('<![endif]--></div>');
+        data = data.substring(pos, 0) + '<![endif]-->'+'\n\n\n\n<!--#/loopitem#--><!--#/loop#-->\n\n\n\n'+'</div>' + data.substring(pos+'<![endif]--></div>'.length);
+
+        // first
+        pos = data.indexOf('<div class="mj-container"');
+        pos = data.indexOf('<!--[if mso | IE]>', pos);
+        data = data.substring(pos, 0) + '\n\n\n\n<!--#loop #--><!--#loopitem#-->\n\n\n\n' + data.substring(pos);
+        
         return data;
     }
 
