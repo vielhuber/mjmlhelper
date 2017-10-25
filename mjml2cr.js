@@ -20,8 +20,7 @@ class mjml2cr
             archive = archiver('zip', { zlib: { level: 9 } });
         archive.pipe(output);
         archive.file('index.html');
-        archive.glob('*.jpg');
-        archive.glob('*.png');
+        archive.directory('_img/', false);
         output.on('close', callback);
         archive.finalize();
     }
@@ -31,6 +30,7 @@ class mjml2cr
         data = this.addStyles(data);
         data = this.attachLoops(data);
         data = this.attachHtmlTags(data);
+        data = this.moveImagesFolder(data);
         return data;
     }
 
@@ -106,6 +106,11 @@ class mjml2cr
             }
         });
         return data;
+    }
+
+    static moveImagesFolder(data)
+    {
+        return data.split('_img/').join('');
     }
 
     static findAllPositions(searchStr, str)
