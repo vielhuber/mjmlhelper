@@ -5,7 +5,7 @@ mjml2cr is a simple converter that makes html files from [mjml](https://mjml.io)
 ## installation
 
 ```
-npm install mjml2cr --save
+npm init -y && npm install mjml2cr --save
 ```
 
 ## setup
@@ -31,7 +31,7 @@ with the following content:
 
 ```
 # do your daily mjml stuff
-node ./node_modules/mjml/bin/mjml index.mjml -o index.html
+node ./node_modules/mjml/bin/mjml --watch index.mjml -o index.html
 # send out a test mail (local images are automatically inlined)
 node ./node_modules/mjml2cr/mjml2cr.js mail
 # create a ready-to-import zip file for CleverReach
