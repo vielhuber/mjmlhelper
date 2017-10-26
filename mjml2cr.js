@@ -147,6 +147,8 @@ class mjml2cr
 
         message = this.embedInlineImages(message);
 
+        fs.writeFileSync(process.cwd()+'/index-converted.html', message.html, 'utf-8');
+
         transporter.sendMail(message, (error, info) => {
             if (error) { return console.log(error); }
         });
@@ -154,19 +156,33 @@ class mjml2cr
 
     static embedInlineImages(message)
     {
-        message.html = message.html.replace(/<img[^>]*>/gi, function (imgTag)
+        let positions = this.findAllPositions('_img/',message.html);
+        if( positions.length > 0 )
         {
-          return imgTag.replace(/\b(src\s*=\s*(?:['"]?))([^'"> ]+)/i, function (src, prefix, url)
-          {
-            let cid = (~~(Math.random()*(9999-1000+1))+1000)+'@possible';
-            message.attachments.push({
-              filename: (url || '').trim(),
-              path: process.cwd()+'/'+(url || '').trim(),
-              cid: cid
+            let shift = 0;
+            positions.forEach((positions__value) =>
+            {
+                let cid = (~~(Math.random()*(9999-1000+1))+1000)+'@possible';
+                let cid_label = 'cid:'+cid;
+                positions__value += shift;
+                let begin = Math.max(
+                    message.html.lastIndexOf('"',positions__value+1),
+                    message.html.lastIndexOf('(',positions__value+1)
+                )+1;
+                let end = Math.min(
+                    ((message.html.indexOf('"',positions__value)>-1)?(message.html.indexOf('"',positions__value)):(message.html.length)),
+                    ((message.html.indexOf(')',positions__value)>-1)?(message.html.indexOf(')',positions__value)):(message.html.length))
+                );
+                let url = message.html.substring(begin, end);
+                message.html = message.html.substring(0, begin) + cid_label + message.html.substring(end);
+                shift += (cid_label.length-(end-begin));
+                message.attachments.push({
+                    filename: url.trim(),
+                    path: process.cwd()+'/'+url.trim(),
+                    cid: cid
+                });
             });
-            return (prefix || '') + 'cid:' + cid;
-          });
-        });
+        }
         return message;
     }
 
