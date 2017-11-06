@@ -38,7 +38,11 @@ class mjml2cr
     {
         let style_tag = '<style type="text/css">',
             pos = data.indexOf(style_tag)+style_tag.length;
-        data = data.substring(0, pos) + ' .mj-container { max-width:600px;margin:0 auto; } ' + data.substring(pos);
+        data =
+            data.substring(0, pos) +
+            ' .mj-container { max-width:600px;margin:0 auto; } ' +
+            ' .mce-tinymce-inline.mce-floatpanel { display:none !important; } ' +
+            data.substring(pos);
         return data;
     }
 
