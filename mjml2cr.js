@@ -39,19 +39,10 @@ class mjml2cr
     {
         let style_tag = '<style type="text/css">',
             pos = data.indexOf(style_tag)+style_tag.length;
-
         // set max width to container so that in cleverreach editor modules are good visible
         data = data.substring(0, pos)+' .mj-container { max-width:600px;margin:0 auto; } '+data.substring(pos);
         // hide tinymce overlay that always goes in the way
         data = data.substring(0, pos)+' .mce-tinymce-inline.mce-floatpanel { display:none !important; } ' +data.substring(pos);
-        // we set the padding of mj-columns to 0
-        // on clients that support media queries, we set here the paddings correctly
-        data = data.substring(0, pos)+' @media only screen and (min-width:480px) { .outlook-group-fix + .outlook-group-fix { padding-top:0px !important; } } ' +data.substring(pos);
-        data = data.substring(0, pos)+' @media only screen and (max-width:480px) { .outlook-group-fix + .outlook-group-fix { padding-top:20px !important; } } ' +data.substring(pos);
-        // several web clients do not support media queries.
-        // we also want to provide a padding to mj-column there
-        data = data.substring(0, pos)+' .outlook-group-fix + .outlook-group-fix { padding-top:20px !important; } ' +data.substring(pos);
-
         return data;
     }
 
