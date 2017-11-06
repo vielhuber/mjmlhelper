@@ -45,8 +45,8 @@ class mjml2cr
         // hide tinymce overlay that always goes in the way
         data = data.substring(0, pos)+' .mce-tinymce-inline.mce-floatpanel { display:none !important; } ' +data.substring(pos);
         // several web clients do not support media queries. we want to provide a padding to mj-column there
-        data = data.substring(0, pos)+' .outlook-group-fix { padding:20px !important; text-align:center; } ' +data.substring(pos);
-        data = data.substring(0, pos)+' @media only screen and (min-width:480px) { .outlook-group-fix  { padding:0px !important; text-align:left; } } ' +data.substring(pos);
+        data = data.substring(0, pos)+' .outlook-group-fix + .outlook-group-fix { padding-top:20px !important; } ' +data.substring(pos);
+        data = data.substring(0, pos)+' @media only screen { .outlook-group-fix + .outlook-group-fix { padding-top:0px !important; } } ' +data.substring(pos);
 
         return data;
     }
