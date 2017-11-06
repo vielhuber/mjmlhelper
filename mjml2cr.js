@@ -1,6 +1,6 @@
 class mjml2cr
 {    
-    
+
     static convert()
     {
         fs.copySync(process.cwd()+'/index.html', process.cwd()+'/index-original.html', { overwrite: true });
@@ -39,11 +39,15 @@ class mjml2cr
     {
         let style_tag = '<style type="text/css">',
             pos = data.indexOf(style_tag)+style_tag.length;
-        data =
-            data.substring(0, pos) +
-            ' .mj-container { max-width:600px;margin:0 auto; } ' +
-            ' .mce-tinymce-inline.mce-floatpanel { display:none !important; } ' +
-            data.substring(pos);
+
+        // set max width to container so that in cleverreach editor modules are good visible
+        data = data.substring(0, pos)+' .mj-container { max-width:600px;margin:0 auto; } '+data.substring(pos);
+        // hide tinymce overlay that always goes in the way
+        data = data.substring(0, pos)+' .mce-tinymce-inline.mce-floatpanel { display:none !important; } ' +data.substring(pos);
+        // several web clients do not support media queries. we want to provide a padding to mj-column there
+        data = data.substring(0, pos)+' .outlook-group-fix { padding:20px !important; text-align:center; } ' +data.substring(pos);
+        data = data.substring(0, pos)+' @media only screen and (min-width:480px) { .outlook-group-fix  { padding:0px !important; text-align:left; } } ' +data.substring(pos);
+
         return data;
     }
 
