@@ -130,9 +130,7 @@ class mjml2cr
 
     static mail()
     {
-        // first modify styles (from convert function)
-        let html = this.addStyles(fs.readFileSync(process.cwd()+'/index.html', 'utf-8')),
-            config = require(process.cwd()+'/mjml2cr.json'),
+        let config = require(process.cwd()+'/mjml2cr.json'),
             transporter = nodemailer.createTransport({
                 host: config.smtp,
                 port: config.port,
@@ -147,7 +145,7 @@ class mjml2cr
                 to: config.to,
                 subject: 'Test E-Mail ✔',
                 generateTextFromHTML: true,
-                html: html,
+                html: fs.readFileSync(process.cwd()+'/index.html', 'utf-8'),
                 attachments: []
             }
 
