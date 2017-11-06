@@ -1,6 +1,5 @@
 class mjml2cr
-{
-    
+{    
     static convert()
     {
         fs.copySync(process.cwd()+'/index.html', process.cwd()+'/index-original.html', { overwrite: true });
