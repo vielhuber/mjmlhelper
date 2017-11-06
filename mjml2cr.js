@@ -135,9 +135,8 @@ class mjml2cr
 
     static mail()
     {
-        
-        // first modify html (from convert function)
-        let html = this.modifyHtml(fs.readFileSync(process.cwd()+'/index.html', 'utf-8')),
+        // first modify styles (from convert function)
+        let html = this.addStyles((fs.readFileSync(process.cwd()+'/index.html', 'utf-8')),
             config = require(process.cwd()+'/mjml2cr.json'),
             transporter = nodemailer.createTransport({
                 host: config.smtp,
