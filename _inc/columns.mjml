@@ -1,0 +1,43 @@
+<mj-wrapper>
+    <mj-section>
+
+        <mj-column
+            width="23.5%"
+        >
+            <mj-text>
+                test
+            </mj-text>
+        </mj-column>
+
+        <mj-column width="2%"><mj-spacer height="20px" /></mj-column>
+
+        <mj-column
+            width="23.5%"
+        >
+            <mj-text>
+                test
+            </mj-text>
+        </mj-column>
+
+        <mj-column width="2%"><mj-spacer height="20px" /></mj-column>
+
+        <mj-column
+            width="23.5%"
+        >
+            <mj-text>
+                test
+            </mj-text>
+        </mj-column>
+
+        <mj-column width="2%"><mj-spacer height="20px" /></mj-column>
+
+        <mj-column
+            width="23.5%"
+        >
+            <mj-text>
+                test
+            </mj-text>
+        </mj-column>
+
+    </mj-section>
+</mj-wrapper>

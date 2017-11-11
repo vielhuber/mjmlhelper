@@ -1,5 +1,9 @@
 *
 !.gitignore
 !package.json
+!/_img/
+!/_img/*
+!/_inc/
+!/_inc/*
 !mjml2cr.js
 !README.md

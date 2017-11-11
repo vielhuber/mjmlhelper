@@ -1,0 +1,9 @@
+<mj-wrapper>
+    <mj-section>
+        <mj-column>
+            <mj-text>
+                test
+            </mj-text>
+        </mj-column>
+    </mj-section>
+</mj-wrapper>
