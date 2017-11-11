@@ -1,6 +1,7 @@
 # 🌈 mjml2cr 🌈
 
 mjml2cr is a simple converter that makes html files from [mjml](https://mjml.io) usable in the drag&drop editor of [CleverReach](https://www.cleverreach.com/en/).
+
 it also includes a mail function and a small boilerplate.
 
 ## installation
@@ -35,13 +36,17 @@ cp ./node_modules/mjml2cr/boilerplate/* *
 
 ## usage
 
+do your daily mjml stuff
 ```
-# do your daily mjml stuff
 node ./node_modules/mjml/bin/mjml --watch index.mjml -o index.html
+```
 
-# send out a test mail (local images are automatically inlined)
+send out a test mail (local images are automatically inlined)
+```
 node ./node_modules/mjml2cr/mjml2cr.js mail
+```
 
-# create a ready-to-import zip file for CleverReach
+create a ready-to-import zip file for CleverReach
+```
 node ./node_modules/mjml2cr/mjml2cr.js convert
 ```
