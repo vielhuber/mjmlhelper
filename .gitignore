@@ -1,10 +1,8 @@
 *
 !.gitignore
 !package.json
-!/_img/
-!/_img/*
-!/_inc/
-!/_inc/*
+!/boilerplate/
+!/boilerplate/*
 !mjml2cr.js
 !mjml2cr.example.json
 !README.md
