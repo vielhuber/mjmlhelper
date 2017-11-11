@@ -14,7 +14,7 @@ npm init -y && npm install mjml2cr --save
 
 copy out a small mjml boilerplate:
 ```
-cp ./node_modules/mjml2cr/boilerplate/* *
+cp -r ./node_modules/mjml2cr/boilerplate/* .
 ```
 
 then create a tiny config file

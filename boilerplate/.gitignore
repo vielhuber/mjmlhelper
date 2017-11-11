@@ -1,5 +1,6 @@
 *
 !.gitignore
+!index.mjml
 !package.json
 !/_img/
 !/_img/*
