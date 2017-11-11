@@ -1,6 +1,6 @@
 # 🌈 mjml2cr 🌈
 
-mjml2cr is a simple converter that makes html files from [mjml](https://mjml.io) usable in [CleverReach](https://www.cleverreach.com/en/).
+mjml2cr is a simple converter that makes html files from [mjml](https://mjml.io) usable in the drag&drop editor of [CleverReach](https://www.cleverreach.com/en/).
 it also includes a mail function and a small boilerplate.
 
 ## installation
@@ -11,11 +11,11 @@ npm init -y && npm install mjml2cr --save
 
 ## setup
 
-create a tiny mail credential config file
+create a tiny config file
 ```
 cp mjml2cr.example.json mjml2cr.json
 ```
-and insert your smtp credentials
+and edit your smtp credentials for sending out emails:
 ```json
 {
     "from": "from@tld.com",
@@ -28,7 +28,7 @@ and insert your smtp credentials
 }
 ```
 
-if you want a small mjml boilerplate, simply copy it out
+if you want a small mjml boilerplate, simply copy it out:
 ```
 cp ./node_modules/mjml2cr/boilerplate/* *
 ```
