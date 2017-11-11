@@ -1,0 +1,13 @@
+<mj-wrapper>
+    <mj-section>
+        <mj-column>
+            <mj-text>
+                test
+            </mj-text>
+            <mj-image
+                width="300"
+                src="_img/test.jpg"
+            />
+        </mj-column>
+    </mj-section>
+</mj-wrapper>

@@ -3,6 +3,8 @@
 !package.json
 !/boilerplate/
 !/boilerplate/*
+!/boilerplate/*/
+!/boilerplate/*/*
 !mjml2cr.js
 !mjml2cr.example.json
 !README.md

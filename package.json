@@ -1,6 +1,6 @@
 {
   "name": "mjml2cr",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "",
   "main": "mjml2cr.js",
   "dependencies": {
