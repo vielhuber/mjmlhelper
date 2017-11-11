@@ -43,6 +43,8 @@ class mjml2cr
         data = data.substring(0, pos)+' .mj-container { max-width:600px;margin:0 auto; } '+data.substring(pos);
         // hide tinymce overlay that always goes in the way
         data = data.substring(0, pos)+' .mce-tinymce-inline.mce-floatpanel { display:none !important; } ' +data.substring(pos);
+        // hide modal overlay
+        data = data.substring(0, pos)+' body.cred_modal:before { display: none !important; } ' +data.substring(pos);
         return data;
     }
 
