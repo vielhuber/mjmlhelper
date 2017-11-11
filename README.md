@@ -12,7 +12,12 @@ npm init -y && npm install mjml2cr --save
 
 ## setup
 
-create a tiny config file
+copy out a small mjml boilerplate:
+```
+cp ./node_modules/mjml2cr/boilerplate/* *
+```
+
+then create a tiny config file
 ```
 cp mjml2cr.example.json mjml2cr.json
 ```
@@ -29,10 +34,7 @@ and edit your smtp credentials for sending out emails:
 }
 ```
 
-if you want a small mjml boilerplate, simply copy it out:
-```
-cp ./node_modules/mjml2cr/boilerplate/* *
-```
+
 
 ## usage
 
