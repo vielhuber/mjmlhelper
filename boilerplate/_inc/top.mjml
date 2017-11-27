@@ -7,7 +7,7 @@
                 mj-class="small strong"
             >
                 <!--#online_version #-->
-                Wird der Newsletter nicht richtig angezeigt? Dann bitte <a style="color:#000" href="{ONLINE_VERSION}">hier klicken</a>.
+                Wird der Newsletter nicht richtig angezeigt? Dann bitte <a class="link-nostyle" href="{ONLINE_VERSION}">hier klicken</a>.
                 <!--#/online_version#-->
             </mj-text>
         </mj-column>

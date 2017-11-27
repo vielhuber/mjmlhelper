@@ -41,6 +41,11 @@
                 font-weight="bold"
             />
             <mj-class
+                name="link-nostyle"
+                color="inherit"
+                text-decoration="none"
+            />
+            <mj-class
                 name="big"
                 font-size="18px"
             />
@@ -58,6 +63,13 @@
                 font-weight="bold"
             />
         </mj-attributes>
+        <mj-style inline="inline">
+            .link-nostyle
+            {
+                color: inherit;
+                text-decoration: none
+            }
+        </mj-style>
     </mj-head>
     <mj-body>
         <mj-container>
