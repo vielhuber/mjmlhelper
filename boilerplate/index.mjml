@@ -68,6 +68,14 @@
             
             <mj-include path="_inc/columns.mjml" />
 
+            <mj-include path="_inc/two-col-left.mjml" />
+
+            <mj-include path="_inc/two-col-right.mjml" />
+
+            <mj-include path="_inc/two-col-left.mjml" />
+            
+            <mj-include path="_inc/two-col-right.mjml" />
+
             <mj-include path="_inc/structure.mjml" />
 
             <mj-include path="_inc/bottom.mjml" />

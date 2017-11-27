@@ -1,0 +1,25 @@
+<mj-wrapper>
+    <mj-section
+        direction="rtl"
+    >
+
+        <mj-column
+            width="48%"
+        >
+            <mj-image
+                src="_img/test.jpg"
+            />
+        </mj-column>
+
+        <mj-column width="4%"><mj-spacer height="20px" /></mj-column>
+
+        <mj-column
+            width="48%"
+        >
+            <mj-text>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+            </mj-text>
+        </mj-column>
+
+    </mj-section>
+</mj-wrapper>
