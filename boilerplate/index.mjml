@@ -66,8 +66,8 @@
         <mj-style inline="inline">
             .link-nostyle
             {
-                color: inherit;
-                text-decoration: none
+                color: #333333;
+                text-decoration: none;
             }
         </mj-style>
     </mj-head>
