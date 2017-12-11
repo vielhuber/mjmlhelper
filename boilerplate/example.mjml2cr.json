@@ -4,7 +4,7 @@
     "username": "your-username",
     "password": "your-password",
     "port": 465,
-    "ssl": "tls"
+    "ssl": "tls",
     "to": "to@tld.com",
     "inline_images": true,
     "log": "log.txt"
