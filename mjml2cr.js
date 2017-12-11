@@ -144,19 +144,59 @@ class mjml2cr
             }),
             message = {
                 from: '"Testmail 👻" <'+config.from+'>',
-                to: config.to,
+                to: null, // will be set later
                 subject: 'Test E-Mail ✔',
                 generateTextFromHTML: true,
                 html: fs.readFileSync(process.cwd()+'/index.html', 'utf-8'),
                 attachments: []
             }
 
-        message = this.embedInlineImages(message);
+        if( config.inline_images !== false )
+        {
+            console.log('inlining images...');
+            message = this.embedInlineImages(message);
+        }
 
         fs.writeFileSync(process.cwd()+'/index-converted.html', message.html, 'utf-8');
 
-        transporter.sendMail(message, (error, info) => {
-            if (error) { return console.log(error); }
+        let to = config.to;
+        if( to instanceof Array )
+        {
+            to = to;
+        }
+        else if( to.indexOf('.txt') > -1 )
+        {
+            to = fs.readFileSync(to, 'utf-8');
+            to = to.replace(/\r\n/g,'\n');
+            to = to.replace(/\r/g,'\n');
+            to = to.split('\n');
+        }
+        else
+        {
+            to = [to];
+        }
+        if( config.log !== undefined )
+        {
+            fs.writeFileSync(config.log, '', 'utf-8');
+        }
+        to.forEach((value, index) =>
+        {
+            setTimeout(() => {
+                message.to = value;
+                transporter.sendMail(message, (error, info) =>
+                {
+                    if (error)
+                    {
+                        return console.log(error);
+                    }
+                    console.log('successfully sent out mail to '+info.envelope.to);
+                    info.time = ('0'+(new Date()).getDate()).slice(-2)+'.'+('0'+((new Date()).getMonth()+1)).slice(-2)+'.'+(new Date()).getFullYear()+' '+('0'+(new Date()).getHours()).slice(-2)+':'+('0'+(new Date()).getMinutes()).slice(-2)+':'+('0'+(new Date()).getSeconds()).slice(-2);
+                    if( config.log !== undefined )
+                    {
+                        fs.appendFileSync('log.txt', JSON.stringify(info)+'\n', 'utf-8');
+                    }
+                });
+            },1000*index);
         });
     }
 
@@ -206,7 +246,6 @@ if( process.argv.slice(2)[0] == 'convert' )
 else if( process.argv.slice(2)[0] == 'mail' )
 {
     mjml2cr.mail();
-    console.log('successfully sent out test mail');
 }
 else
 {
