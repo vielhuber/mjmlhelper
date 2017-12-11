@@ -27,16 +27,16 @@ then edit your smtp credentials in mjml2cr.json for sending out emails:
     "username": "your-username",
     "password": "your-password",
     "port": 465,
-    "ssl": "tls"
+    "ssl": "tls",
     "to": "to@tld.com",
     "inline_images": true,
     "log": "log.txt"
 }
 ```
 
-you can also specifiy an array or a textfile for the to-argument:
-    "to": ["to@tld.com","to2@tld.com"]
-    "to": "list.txt"
+you can also specifiy an array or a textfile for the to-argument: 
+    "to": ["to@tld.com","to2@tld.com"]     
+    "to": "list.txt" 
 
 ## usage
 
