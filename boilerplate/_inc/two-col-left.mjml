@@ -1,5 +1,7 @@
 <mj-wrapper>
-    <mj-section>
+    <mj-section
+        direction="ltr"
+    >
 
         <mj-column
             width="48%"

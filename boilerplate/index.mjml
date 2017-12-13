@@ -81,7 +81,6 @@
                 .mj-column-per-50 { max-width:50%; }
                 .mj-column-per-100 { max-width:100%; }
             }
-            </style>
         </mj-style>
     </mj-head>
     <mj-body>
