@@ -70,6 +70,19 @@
                 text-decoration: none;
             }
         </mj-style>
+        <!-- see https://github.com/mjmlio/mjml/issues/919 -->
+        <mj-style>
+            @media only screen and (min-width:480px)
+            {
+                .mj-column-per-4 { max-width:4%; }
+                .mj-column-per-20 { max-width:20%; }
+                .mj-column-per-48 { max-width:48%; }
+                .mj-column-per-40 { max-width:40%; }
+                .mj-column-per-50 { max-width:50%; }
+                .mj-column-per-100 { max-width:100%; }
+            }
+            </style>
+        </mj-style>
     </mj-head>
     <mj-body>
         <mj-container>
