@@ -9,7 +9,7 @@
             >
                 <!--#unsubscribe #-->
                 Sie haben diese E-Mail erhalten, weil Sie sich für den XXX Newsletter angemeldet haben.<br/>
-                Hier können Sie sich vom <a style="color:#000" href="{UNSUBSCRIBE}">Newsletter abmelden</a>.
+                Hier können Sie sich vom <a style="color:#000" href="{UNSUBSCRIBE}" target="_blank">Newsletter abmelden</a>.
                 <!--#/unsubscribe#-->
             </mj-text>
             <mj-text
