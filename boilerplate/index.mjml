@@ -75,7 +75,7 @@
                 text-decoration: none;
             }
         </mj-style>
-        <!-- see https://github.com/mjmlio/mjml/issues/919 -->
+        <!-- gmx/web.de: enable multi column layout -->
         <mj-style>
             @media only screen and (min-width:480px)
             {
@@ -87,6 +87,24 @@
                 .mj-column-per-100 { max-width:100%; }
             }
         </mj-style>
+        <!-- iphone: full width images -->
+        <mj-style>
+            @media only screen and (max-width:480px)
+            {
+                div[class*="mj-column"] table,
+                div[class*="mj-column"] td,
+                div[class*="mj-column"] td img { min-width:100%; }
+            }
+        </mj-style>
+        <!-- iphone: increase font sizes -->
+        <mj-style>
+            @media only screen and (max-width:480px)
+            {
+                *[style*="font-size:16"] { font-size:20px !important;line-height:24px !important; }
+                *[style*="font-size:13"] { font-size:17px !important;line-height:22px !important; }
+                *[style*="font-size:10"] { font-size:15px !important;line-height:20px !important; }
+            }
+        </mj-style>  
     </mj-head>
     <mj-body>
         <mj-container>
