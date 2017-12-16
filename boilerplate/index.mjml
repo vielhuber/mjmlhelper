@@ -12,7 +12,7 @@
               font-family: 'Custom';
               font-style: normal;
               font-weight: 400;
-              src: url("_img/font.woff2") format('woff2');
+              src: url('_img/font.woff2') format('woff2');
             }
         </mj-style>
 
@@ -80,6 +80,7 @@
             {
                 color: #333333;
                 text-decoration: none;
+                border: none;
             }
         </mj-style>
         <!-- gmx/web.de: enable multi column layout -->
@@ -98,9 +99,9 @@
         <mj-style>
             @media only screen and (max-width:480px)
             {
-                div[class*="mj-column"] table,
-                div[class*="mj-column"] td,
-                div[class*="mj-column"] td img { min-width:100%; }
+                .mobile-full-width table,
+                .mobile-full-width td,
+                .mobile-full-width td img { min-width:100%; }
             }
         </mj-style>
         <!-- iphone: increase font sizes -->
@@ -119,6 +120,8 @@
             <mj-include path="_inc/top.mjml" />
 
             <mj-include path="_inc/simple.mjml" />
+
+            <mj-include path="_inc/divider.mjml" />
             
             <mj-include path="_inc/columns.mjml" />
 

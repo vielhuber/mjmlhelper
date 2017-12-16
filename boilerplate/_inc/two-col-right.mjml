@@ -5,6 +5,7 @@
 
         <mj-column
             width="48%"
+            css-class="mobile-full-width"
         >
             <mj-image
                 src="_img/test.jpg"
@@ -15,6 +16,7 @@
 
         <mj-column
             width="48%"
+            css-class="mobile-full-width"
         >
             <mj-text>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
