@@ -1,8 +1,12 @@
 # 🌈 mjmlhelper 🌈
 
-mjmlhelper is a simple converter that makes html files from [mjml](https://mjml.io) usable in the drag&drop editor of [CleverReach](https://www.cleverreach.com/en/).
+mjmlhelper is a little toolbox that...
 
-it also includes a mail function and a small boilerplate.
+- sends mails from the command line for testing and production,
+- automatically uploads images for testing purposes,
+- converts your template to the drag&drop editor of [CleverReach](https://www.cleverreach.com/en/).
+
+it also includes a small boilerplate and some nifty updates for mjml.
 
 ## installation
 
