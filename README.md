@@ -7,7 +7,7 @@ it also includes a mail function and a small boilerplate.
 ## installation
 
 ```
-npm init -y && npm install mjmlhelper --save
+yarn init -y && yarn add mjmlhelper
 ```
 
 ## setup
@@ -47,12 +47,12 @@ do your daily mjml stuff
 node ./node_modules/mjml/bin/mjml --watch index.mjml -o index.html
 ```
 
-send out a test mail (local images are automatically inlined)
+send out a test mail
 ```
 node ./node_modules/mjmlhelper/mjmlhelper.js mail
 ```
 
 create a ready-to-import zip file for CleverReach
 ```
-node ./node_modules/mjmlhelper/mjmlhelper.js convert
+node ./node_modules/mjmlhelper/mjmlhelper.js cleverreach
 ```

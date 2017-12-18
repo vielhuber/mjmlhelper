@@ -1,7 +1,7 @@
 class mjmlhelper
 {    
 
-    static convert()
+    static cleverreach()
     {
         fs.copySync(process.cwd()+'/index.html', process.cwd()+'/index-original.html', { overwrite: true });
         let data = fs.readFileSync(process.cwd()+'/index.html', 'utf-8');
@@ -263,9 +263,9 @@ const fs = require('fs-extra'),
       archiver = require('archiver'),
       nodemailer = require('nodemailer');
 
-if( process.argv.slice(2)[0] == 'convert' )
+if( process.argv.slice(2)[0] == 'cleverreach' )
 {
-    mjmlhelper.convert();
+    mjmlhelper.cleverreach();
     console.log('successfully created index.zip');
 }
 else if( process.argv.slice(2)[0] == 'mail' )
@@ -274,5 +274,5 @@ else if( process.argv.slice(2)[0] == 'mail' )
 }
 else
 {
-    console.log('missing options. possible options: convert, mail');
+    console.log('missing options. possible options: cleverreach, mail');
 }
