@@ -45,6 +45,12 @@ class mjml2cr
         data = data.substring(0, pos)+' .mce-tinymce-inline.mce-floatpanel { display:none !important; } ' +data.substring(pos);
         // hide modal overlay
         data = data.substring(0, pos)+' body.cred_modal:before { display: none !important; } ' +data.substring(pos);
+        // cleverreach merges all styles together
+        // now outlook-group-fix fails on gmail: remove that rule
+        data = data.replace('.outlook-group-fix {','.disabled-outlook-group-fix {');
+        // now @ms-viewport and @viewport fails on gmail: remove that rule
+        data = data.replace('@-ms-viewport {','.disabled-ms-viewport {');
+        data = data.replace('@viewport {','.disabled-viewport {');
         return data;
     }
 

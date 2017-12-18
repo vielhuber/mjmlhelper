@@ -55,7 +55,7 @@
             <mj-divider
                 border-width="1px" 
                 border-style="solid" 
-                border-color="lightgrey"
+                border-color="#d3d3d3"
             />
             <mj-class
                 name="big"
@@ -104,15 +104,18 @@
                 .mobile-full-width td img { min-width:100%; }
             }
         </mj-style>
-        <!-- iphone: increase font sizes -->
+        <!-- iphone: increase font sizes (we choose here a bigger viewport because cleverreach and gmx fail when this rule gets hoisted) -->
         <mj-style>
-            @media only screen and (max-width:480px)
+            @media only screen and (max-width:500px)
             {
-                *[style*="font-size:16"] { font-size:20px !important;line-height:24px !important; }
-                *[style*="font-size:13"] { font-size:17px !important;line-height:22px !important; }
-                *[style*="font-size:10"] { font-size:15px !important;line-height:20px !important; }
+                *[style*="font-size:16"],
+                *[style*="font-size: 16"] { font-size:20px !important;line-height:24px !important; }
+                *[style*="font-size:13"],
+                *[style*="font-size: 13"] { font-size:17px !important;line-height:22px !important; }
+                *[style*="font-size:10"],
+                *[style*="font-size: 10"] { font-size:15px !important;line-height:20px !important; }
             }
-        </mj-style>  
+        </mj-style>
     </mj-head>
     <mj-body>
         <mj-container>

@@ -7,12 +7,12 @@
             <mj-divider
                 border-width="1px" 
                 border-style="solid" 
-                border-color="lightgrey"
+                border-color="#d3d3d3"
             />
 
             <!-- to align a divider left, use an empty mj-button -->
               <mj-button
-                border-bottom="1px solid red"
+                border-bottom="1px solid #ff0000"
                 align="left"
                 width="90px"
                 padding-left="20px"
