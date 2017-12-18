@@ -34,7 +34,7 @@ then edit your smtp credentials in mjmlhelper.json for sending out emails:
 }
 ```
 
-you can also specifiy an array or a textfile for the to-argument:
+you can also specify an array or a textfile for the to-argument:
 ```json
     "to": ["to@tld.com","to2@tld.com"]
     "to": "list.txt"
