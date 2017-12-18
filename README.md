@@ -1,25 +1,25 @@
-# 🌈 mjml2cr 🌈
+# 🌈 mjmlhelper 🌈
 
-mjml2cr is a simple converter that makes html files from [mjml](https://mjml.io) usable in the drag&drop editor of [CleverReach](https://www.cleverreach.com/en/).
+mjmlhelper is a simple converter that makes html files from [mjml](https://mjml.io) usable in the drag&drop editor of [CleverReach](https://www.cleverreach.com/en/).
 
 it also includes a mail function and a small boilerplate.
 
 ## installation
 
 ```
-npm init -y && npm install mjml2cr --save
+npm init -y && npm install mjmlhelper --save
 ```
 
 ## setup
 
 copy out a small mjml boilerplate:
 ```
-cp -r ./node_modules/mjml2cr/boilerplate/* .
-cp example.mjml2cr.json mjml2cr.json
+cp -r ./node_modules/mjmlhelper/boilerplate/* .
+cp example.mjmlhelper.json mjmlhelper.json
 cp example.gitignore .gitignore
 ```
 
-then edit your smtp credentials in mjml2cr.json for sending out emails:
+then edit your smtp credentials in mjmlhelper.json for sending out emails:
 ```json
 {
     "from": "from@tld.com",
@@ -49,10 +49,10 @@ node ./node_modules/mjml/bin/mjml --watch index.mjml -o index.html
 
 send out a test mail (local images are automatically inlined)
 ```
-node ./node_modules/mjml2cr/mjml2cr.js mail
+node ./node_modules/mjmlhelper/mjmlhelper.js mail
 ```
 
 create a ready-to-import zip file for CleverReach
 ```
-node ./node_modules/mjml2cr/mjml2cr.js convert
+node ./node_modules/mjmlhelper/mjmlhelper.js convert
 ```

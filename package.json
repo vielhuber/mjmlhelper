@@ -1,8 +1,8 @@
 {
-  "name": "mjml2cr",
+  "name": "mjmlhelper",
   "version": "1.4.4",
   "description": "",
-  "main": "mjml2cr.js",
+  "main": "mjmlhelper.js",
   "dependencies": {
     "archiver": "^2.1.0",
     "fs-extra": "^4.0.2",

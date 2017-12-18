@@ -1,4 +1,4 @@
-class mjml2cr
+class mjmlhelper
 {    
 
     static convert()
@@ -153,7 +153,7 @@ class mjml2cr
 
     static mail()
     {
-        let config = require(process.cwd()+'/mjml2cr.json'),
+        let config = require(process.cwd()+'/mjmlhelper.json'),
             transporter = nodemailer.createTransport({
                 host: config.smtp,
                 port: config.port,
@@ -265,12 +265,12 @@ const fs = require('fs-extra'),
 
 if( process.argv.slice(2)[0] == 'convert' )
 {
-    mjml2cr.convert();
+    mjmlhelper.convert();
     console.log('successfully created index.zip');
 }
 else if( process.argv.slice(2)[0] == 'mail' )
 {
-    mjml2cr.mail();
+    mjmlhelper.mail();
 }
 else
 {

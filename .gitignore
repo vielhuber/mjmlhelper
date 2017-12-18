@@ -5,6 +5,6 @@
 !/boilerplate/*
 !/boilerplate/*/
 !/boilerplate/*/*
-!mjml2cr.js
-!mjml2cr.example.json
+!mjmlhelper.js
+!mjmlhelper.example.json
 !README.md
