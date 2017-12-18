@@ -83,21 +83,9 @@
                 border: none;
             }
         </mj-style>
-        <!-- gmx/web.de: enable multi column layout -->
-        <mj-style>
-            @media only screen and (min-width:480px)
-            {
-                .mj-column-per-4 { max-width:4%; }
-                .mj-column-per-20 { max-width:20%; }
-                .mj-column-per-48 { max-width:48%; }
-                .mj-column-per-40 { max-width:40%; }
-                .mj-column-per-50 { max-width:50%; }
-                .mj-column-per-100 { max-width:100%; }
-            }
-        </mj-style>
         <!-- iphone: full width images -->
         <mj-style>
-            @media only screen and (max-width:480px)
+            @media only screen and (max-width:500px)
             {
                 .mobile-full-width table,
                 .mobile-full-width td,

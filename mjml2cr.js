@@ -28,14 +28,15 @@ class mjml2cr
 
     static modifyHtml(data)
     {
-        data = this.addStyles(data);
+        data = this.addCleverReachStyles(data);
+        data = this.doSomeHacks(data);
         data = this.moveImagesFolder(data);
         data = this.attachLoops(data);
         data = this.attachHtmlTags(data);
         return data;
     }
 
-    static addStyles(data)
+    static addCleverReachStyles(data)
     {
         let style_tag = '<style type="text/css">',
             pos = data.indexOf(style_tag)+style_tag.length;
@@ -51,6 +52,20 @@ class mjml2cr
         // now @ms-viewport and @viewport fails on gmail: remove that rule
         data = data.replace('@-ms-viewport {','.disabled-ms-viewport {');
         data = data.replace('@viewport {','.disabled-viewport {');
+        return data;
+    }
+
+    static doSomeHacks(data)
+    {
+        // gmx/web.de desktop: enable multi column layout
+        for( var i = 0; i <= 100; i++ )
+        {
+            data = data.split('.mj-column-per-'+i+' { width:'+i+'%!important; }').join('.mj-column-per-'+i+' { width:'+i+'%!important;max-width:'+i+'%; }');
+        }
+
+        // gmx/web.de mobile: slightly increase breakpoint
+        data = data.split('(min-width:480px)').join('(min-width:500px)');
+
         return data;
     }
 
@@ -162,6 +177,10 @@ class mjml2cr
             console.log('inlining images...');
             message = this.embedInlineImages(message);
         }
+
+        // call functions from cleverreach converter (only relevant ones)
+        message.html = this.addCleverReachStyles(message.html);
+        message.html = this.doSomeHacks(message.html);
 
         fs.writeFileSync(process.cwd()+'/index-converted.html', message.html, 'utf-8');
 
