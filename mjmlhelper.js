@@ -1,6 +1,11 @@
 class mjmlhelper
 {    
 
+    static config()
+    {
+        return require(process.cwd()+'/mjmlhelper.json');
+    }
+
     static cleverreach()
     {
         fs.copySync(process.cwd()+'/index.html', process.cwd()+'/index-original.html', { overwrite: true });
@@ -153,18 +158,17 @@ class mjmlhelper
 
     static mail()
     {
-        let config = require(process.cwd()+'/mjmlhelper.json'),
-            transporter = nodemailer.createTransport({
-                host: config.smtp,
-                port: config.port,
-                secure: ((config.ssl !== false)?(true):(false)),
+        let transporter = nodemailer.createTransport({
+                host: this.config().smtp,
+                port: this.config().port,
+                secure: ((this.config().ssl !== false)?(true):(false)),
                 auth: {
-                    user: config.username,
-                    pass: config.password
+                    user: this.config().username,
+                    pass: this.config().password
                 }
             }),
             message = {
-                from: '"Testmail 👻" <'+config.from+'>',
+                from: '"Testmail 👻" <'+this.config().from+'>',
                 to: null, // will be set later
                 subject: 'Test E-Mail ✔',
                 generateTextFromHTML: true,
@@ -172,10 +176,16 @@ class mjmlhelper
                 attachments: []
             }
 
-        if( config.inline_images !== false )
+        if( this.config().images == 'inline' )
         {
             console.log('inlining images...');
-            message = this.embedInlineImages(message);
+            message = this.inlineImages(message);
+        }
+        else if( this.config().images == 'upload' )
+        {
+            console.log('uploading images...');
+            // this is asynchrionus but we simply do process further
+            message.html = this.uploadImages(message.html);
         }
 
         // call functions from cleverreach converter (only relevant ones)
@@ -184,7 +194,7 @@ class mjmlhelper
 
         fs.writeFileSync(process.cwd()+'/index-converted.html', message.html, 'utf-8');
 
-        let to = config.to;
+        let to = this.config().to;
         if( to instanceof Array )
         {
             to = to;
@@ -200,9 +210,9 @@ class mjmlhelper
         {
             to = [to];
         }
-        if( config.log !== undefined )
+        if( this.config().log !== undefined )
         {
-            fs.writeFileSync(config.log, '', 'utf-8');
+            fs.writeFileSync(this.config().log, '', 'utf-8');
         }
         to.forEach((value, index) =>
         {
@@ -216,7 +226,7 @@ class mjmlhelper
                     }
                     console.log('successfully sent out mail to '+info.envelope.to);
                     info.time = ('0'+(new Date()).getDate()).slice(-2)+'.'+('0'+((new Date()).getMonth()+1)).slice(-2)+'.'+(new Date()).getFullYear()+' '+('0'+(new Date()).getHours()).slice(-2)+':'+('0'+(new Date()).getMinutes()).slice(-2)+':'+('0'+(new Date()).getSeconds()).slice(-2);
-                    if( config.log !== undefined )
+                    if( this.config().log !== undefined )
                     {
                         fs.appendFileSync('log.txt', JSON.stringify(info)+'\n', 'utf-8');
                     }
@@ -225,7 +235,60 @@ class mjmlhelper
         });
     }
 
-    static embedInlineImages(message)
+    static uploadImages(data)
+    {
+        let positions = this.findAllPositions('_img/',data);
+        if( positions.length === 0 )
+        {            
+            return data;
+        }
+        let shift = 0;
+        positions.forEach((positions__value) =>
+        {
+            positions__value += shift;
+            let begin = Math.max(
+                data.lastIndexOf('"',positions__value+1),
+                data.lastIndexOf('(',positions__value+1),
+                (data.lastIndexOf('(\'',positions__value+1)+1)
+            )+1;
+            let end = Math.min(
+                ((data.indexOf('"',positions__value)>-1)?(data.indexOf('"',positions__value)):(data.length)),
+                ((data.indexOf(')',positions__value)>-1)?(data.indexOf(')',positions__value)):(data.length)),
+                ((data.indexOf('\')',positions__value)>-1)?(data.indexOf('\')',positions__value)):(data.length))
+            );
+            let image = data.substring(begin, end);
+            this.uploadFile(image);
+            image = image.replace('_img/','');
+            let url = this.config().ftp.url+'/'+image;
+            data = data.substring(0, begin) + url + data.substring(end);
+            shift += (url.length-(end-begin));
+        });
+        return data;
+    }
+
+    static uploadFile(filename)
+    {
+        let ftp = new Client();
+        ftp.on('ready', () =>
+        {
+            ftp.put(process.cwd()+'/'+filename, this.config().ftp.path+filename.replace('_img/',''), (error) =>
+            {
+                if(error)
+                {
+                    throw error;
+                }
+                ftp.end();
+            });
+        });
+        ftp.connect({
+            host: this.config().ftp.host,
+            port: this.config().ftp.port,
+            user: this.config().ftp.username,
+            password: this.config().ftp.password 
+        });
+    }
+
+    static inlineImages(message)
     {
         let positions = this.findAllPositions('_img/',message.html);
         if( positions.length > 0 )
@@ -245,6 +308,10 @@ class mjmlhelper
                     ((message.html.indexOf(')',positions__value)>-1)?(message.html.indexOf(')',positions__value)):(message.html.length))
                 );
                 let url = message.html.substring(begin, end);
+                if( url.indexOf('.jpg') === -1 && url.indexOf('.gif') === -1 && url.indexOf('.png') === -1 )
+                {
+                    return;
+                }
                 message.html = message.html.substring(0, begin) + cid_label + message.html.substring(end);
                 shift += (cid_label.length-(end-begin));
                 message.attachments.push({
@@ -261,7 +328,8 @@ class mjmlhelper
 
 const fs = require('fs-extra'),
       archiver = require('archiver'),
-      nodemailer = require('nodemailer');
+      nodemailer = require('nodemailer'),
+      Client = require('ftp');
 
 if( process.argv.slice(2)[0] == 'cleverreach' )
 {

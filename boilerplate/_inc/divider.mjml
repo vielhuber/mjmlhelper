@@ -19,6 +19,8 @@
                 padding-right="20px"
                 padding-top="10px"
                 padding-bottom="10px"
+                background-color="transparent"
+                border-radius="0px"
               ></mj-button>
 
         </mj-column>

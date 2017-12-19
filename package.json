@@ -1,11 +1,12 @@
 {
   "name": "mjmlhelper",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "",
   "main": "mjmlhelper.js",
   "dependencies": {
     "archiver": "^2.1.0",
     "fs-extra": "^4.0.2",
+    "ftp": "^0.3.10",
     "mjml": "^3.3.5",
     "nodemailer": "^4.3.0"
   },

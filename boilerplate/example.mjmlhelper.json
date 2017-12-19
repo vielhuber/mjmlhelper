@@ -1,0 +1,26 @@
+{
+    "from": "from@tld.com",
+    "smtp": "your.hostname.com",
+    "username": "your-username",
+    "password": "your-password",
+    "port": 465,
+    "ssl": "tls",
+
+    "to": "to@tld.com",
+    "to": ["to@tld.com","to2@tld.com"],
+    "to": "list.txt",
+
+    "images": false,
+    "images": "inline",    
+    "images": "upload",
+
+    "log": "log.txt",
+    "ftp": {
+        "host": "localhost",
+        "port": 21,
+        "username": "foo",
+        "password": "bar",
+        "path": "/path/to/folder/",
+        "url": "https://tld.com/path/to/folder"
+    }
+}

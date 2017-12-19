@@ -3,10 +3,10 @@
 mjmlhelper is a little toolbox that...
 
 - sends mails from the command line for testing and production,
-- automatically uploads images for testing purposes,
+- automatically inlines or uploads images for testing purposes,
 - converts your template to the drag&drop editor of [CleverReach](https://www.cleverreach.com/en/).
 
-it also includes a small boilerplate and some nifty updates for mjml.
+it also includes a small boilerplate and some nifty updates for [https://mjml.io/](https://www.mjml.io).
 
 ## installation
 
@@ -32,16 +32,25 @@ then edit your smtp credentials in mjmlhelper.json for sending out emails:
     "password": "your-password",
     "port": 465,
     "ssl": "tls",
-    "to": "to@tld.com",
-    "inline_images": true,
-    "log": "log.txt"
-}
-```
 
-you can also specify an array or a textfile for the to-argument:
-```json
-    "to": ["to@tld.com","to2@tld.com"]
-    "to": "list.txt"
+    "to": "to@tld.com",
+    "to": ["to@tld.com","to2@tld.com"],
+    "to": "list.txt",
+
+    "images": false,
+    "images": "inline",
+    "images": "upload",
+
+    "log": "log.txt",
+    "ftp": {
+        "host": "localhost",
+        "port": 21,
+        "username": "foo",
+        "password": "bar",
+        "path": "/path/to/folder/",
+        "url": "https://tld.com/path/to/folder"
+    }
+}
 ```
 
 ## usage
@@ -51,7 +60,7 @@ do your daily mjml stuff
 node ./node_modules/mjml/bin/mjml --watch index.mjml -o index.html
 ```
 
-send out a test mail
+send out mail
 ```
 node ./node_modules/mjmlhelper/mjmlhelper.js mail
 ```

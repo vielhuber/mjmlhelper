@@ -11,12 +11,12 @@
                 height="40px"
             />
             <mj-html>
-                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/facebook.png" width="32" /></a>&nbsp;
-                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/facebook.png" width="32" /></a>&nbsp;
-                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/facebook.png" width="32" /></a>&nbsp;
-                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/facebook.png" width="32" /></a>&nbsp;
-                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/facebook.png" width="32" /></a>&nbsp;
-                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/facebook.png" width="32" /></a>
+                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/test.jpg" width="32" /></a>&nbsp;
+                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/test.jpg" width="32" /></a>&nbsp;
+                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/test.jpg" width="32" /></a>&nbsp;
+                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/test.jpg" width="32" /></a>&nbsp;
+                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/test.jpg" width="32" /></a>&nbsp;
+                <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_img/test.jpg" width="32" /></a>
             </mj-html>
 
             <mj-spacer
