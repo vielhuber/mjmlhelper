@@ -2,8 +2,8 @@
 !.gitignore
 !index.mjml
 !package.json
-!/_img/
-!/_img/*
+!/_assets/
+!/_assets/*
 !/_inc/
 !/_inc/*
 !example.mjmlhelper.json

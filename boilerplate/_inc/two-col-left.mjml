@@ -8,7 +8,7 @@
             css-class="mobile-full-width"
         >
             <mj-image
-                src="_img/test.jpg"
+                src="_assets/test.jpg"
             />
         </mj-column>
 

@@ -7,7 +7,7 @@
             </mj-text>
 
             <mj-image
-                src="_img/test.jpg"
+                src="_assets/test.jpg"
             />
 
             <mj-text>

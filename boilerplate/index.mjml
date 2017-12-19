@@ -12,7 +12,7 @@
               font-family: 'Custom';
               font-style: normal;
               font-weight: 400;
-              src: url('_img/font.woff2') format('woff2');
+              src: url('_assets/font.woff2') format('woff2');
             }
         </mj-style>
 

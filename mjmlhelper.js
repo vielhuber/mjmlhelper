@@ -26,7 +26,7 @@ class mjmlhelper
             archive = archiver('zip', { zlib: { level: 9 } });
         archive.pipe(output);
         archive.file('index.html');
-        archive.directory('_img/', false);
+        archive.directory('_assets/', false);
         output.on('close', callback);
         archive.finalize();
     }
@@ -135,7 +135,7 @@ class mjmlhelper
 
     static moveImagesFolder(data)
     {
-        return data.split('_img/').join('');
+        return data.split('_assets/').join('');
     }
 
     static findAllPositions(searchStr, str)
@@ -237,7 +237,7 @@ class mjmlhelper
 
     static uploadImages(data)
     {
-        let positions = this.findAllPositions('_img/',data);
+        let positions = this.findAllPositions('_assets/',data);
         if( positions.length === 0 )
         {            
             return data;
@@ -258,7 +258,7 @@ class mjmlhelper
             );
             let image = data.substring(begin, end);
             this.uploadFile(image);
-            image = image.replace('_img/','');
+            image = image.replace('_assets/','');
             let url = this.config().ftp.url+'/'+image;
             data = data.substring(0, begin) + url + data.substring(end);
             shift += (url.length-(end-begin));
@@ -271,7 +271,7 @@ class mjmlhelper
         let ftp = new Client();
         ftp.on('ready', () =>
         {
-            ftp.put(process.cwd()+'/'+filename, this.config().ftp.path+filename.replace('_img/',''), (error) =>
+            ftp.put(process.cwd()+'/'+filename, this.config().ftp.path+filename.replace('_assets/',''), (error) =>
             {
                 if(error)
                 {
@@ -290,7 +290,7 @@ class mjmlhelper
 
     static inlineImages(message)
     {
-        let positions = this.findAllPositions('_img/',message.html);
+        let positions = this.findAllPositions('_assets/',message.html);
         if( positions.length > 0 )
         {
             let shift = 0;
