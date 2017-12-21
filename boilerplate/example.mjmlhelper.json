@@ -1,5 +1,6 @@
 {
     "from": "from@tld.com",
+    "name": "Testmailer",
     "smtp": "your.hostname.com",
     "username": "your-username",
     "password": "your-password",

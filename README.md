@@ -27,6 +27,7 @@ then edit your smtp credentials in mjmlhelper.json for sending out emails:
 ```json
 {
     "from": "from@tld.com",
+    "name": "Testmailer",
     "smtp": "your.hostname.com",
     "username": "your-username",
     "password": "your-password",

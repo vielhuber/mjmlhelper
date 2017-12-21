@@ -1,6 +1,9 @@
 <mjml>
     <mj-head>
 
+        <mj-title>Betreff im Mailing</mj-title>
+        <mj-preview>Previewtext im Mailing</mj-preview>
+
         <!-- custom fonts (only working for apple mail and iphone/ipad) -->
         <mj-font
             name="Roboto"

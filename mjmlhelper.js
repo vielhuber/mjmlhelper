@@ -167,12 +167,13 @@ class mjmlhelper
                     pass: this.config().password
                 }
             }),
+            data = fs.readFileSync(process.cwd()+'/index.html', 'utf-8'),
             message = {
-                from: '"Testmail 👻" <'+this.config().from+'>',
+                from: '"'+this.config().name+'" <'+this.config().from+'>',
                 to: null, // will be set later
-                subject: 'Test E-Mail ✔',
+                subject: this.fetchSubject(data),
                 generateTextFromHTML: true,
-                html: fs.readFileSync(process.cwd()+'/index.html', 'utf-8'),
+                html: data,
                 attachments: []
             }
 
@@ -322,6 +323,13 @@ class mjmlhelper
             });
         }
         return message;
+    }
+
+    static fetchSubject(data)
+    {
+        let begin = data.indexOf('<title>')+('<title>').length,
+            end = data.indexOf('</title>');
+        return data.substring(begin, end);
     }
 
 };
