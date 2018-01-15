@@ -238,13 +238,15 @@ class mjmlhelper
 
     static uploadImages(data)
     {
-        let positions = this.findAllPositions('_assets/',data);
+        let positions = this.findAllPositions('_assets/',data),
+            shift = 0,
+            filenames = [],
+            ftp = new Client();        
         if( positions.length === 0 )
         {            
             return data;
         }
-        let shift = 0;
-        positions.forEach((positions__value) =>
+        positions.forEach((positions__value, positions__key) =>
         {
             positions__value += shift;
             let begin = Math.max(
@@ -257,37 +259,38 @@ class mjmlhelper
                 ((data.indexOf(')',positions__value)>-1)?(data.indexOf(')',positions__value)):(data.length)),
                 ((data.indexOf('\')',positions__value)>-1)?(data.indexOf('\')',positions__value)):(data.length))
             );
-            let image = data.substring(begin, end);
-            this.uploadFile(image);
+            let image = data.substring(begin, end);          
+            filenames.push(image);
             image = image.replace('_assets/','');
             let url = this.config().ftp.url+'/'+image;
             data = data.substring(0, begin) + url + data.substring(end);
             shift += (url.length-(end-begin));
         });
-        return data;
-    }
-
-    static uploadFile(filename)
-    {
-        let ftp = new Client();
         ftp.on('ready', () =>
         {
-            ftp.put(process.cwd()+'/'+filename, this.config().ftp.path+filename.replace('_assets/',''), (error) =>
+            filenames.forEach((filenames__value, filenames__key) =>
             {
-                if(error)
+                ftp.put(process.cwd()+'/'+filenames__value, this.config().ftp.path+filenames__value.replace('_assets/',''), (error) =>
                 {
-                    throw error;
-                }
-                ftp.end();
+                    if(error) {
+                        throw error;
+                    }
+                    if( filenames__key >= filenames.length-1 )
+                    {
+                        ftp.end();
+                    }
+                });
             });
         });
         ftp.connect({
             host: this.config().ftp.host,
             port: this.config().ftp.port,
             user: this.config().ftp.username,
-            password: this.config().ftp.password 
+            password: this.config().ftp.password
         });
+        return data;
     }
+
 
     static inlineImages(message)
     {
