@@ -5,6 +5,7 @@
 
         <mj-column
             width="48%"
+            padding="2%"
             css-class="mobile-full-width"
         >
             <mj-image
@@ -12,10 +13,9 @@
             />
         </mj-column>
 
-        <mj-column width="4%"><mj-spacer height="20px" /></mj-column>
-
         <mj-column
             width="48%"
+            padding="2%"
             css-class="mobile-full-width"
         >
             <mj-text>

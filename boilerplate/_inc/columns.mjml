@@ -2,37 +2,35 @@
     <mj-section>
 
         <mj-column
-            width="23.5%"
+            width="25%"
+            padding="2%"
         >
             <mj-text>
                 test
             </mj-text>
         </mj-column>
 
-        <mj-column width="2%"><mj-spacer height="20px" /></mj-column>
-
         <mj-column
-            width="23.5%"
+            width="25%"
+            padding="2%"
         >
             <mj-text>
                 test
             </mj-text>
         </mj-column>
 
-        <mj-column width="2%"><mj-spacer height="20px" /></mj-column>
-
         <mj-column
-            width="23.5%"
+            width="25%"
+            padding="2%"
         >
             <mj-text>
                 test
             </mj-text>
         </mj-column>
 
-        <mj-column width="2%"><mj-spacer height="20px" /></mj-column>
-
         <mj-column
-            width="23.5%"
+            width="25%"
+            padding="2%"
         >
             <mj-text>
                 test

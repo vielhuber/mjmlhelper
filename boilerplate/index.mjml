@@ -1,8 +1,10 @@
-<mjml>
+<mjml owa="desktop">
     <mj-head>
 
         <mj-title>Betreff im Mailing</mj-title>
         <mj-preview>Previewtext im Mailing</mj-preview>
+
+        <mj-breakpoint width="480px" />
 
         <!-- custom fonts (only working for apple mail and iphone/ipad) -->
         <mj-font
@@ -25,10 +27,7 @@
                 font-family="Roboto, Custom, sans-serif"
                 color="#333333"
                 align="center"
-            />
-            <mj-container
-                width="600px"
-                background-color="#eee"
+                vertical-align="top"
             />
             <mj-wrapper
                 background-color="#ffffff"
@@ -87,33 +86,35 @@
             }
         </mj-style>
     </mj-head>
-    <mj-body>
-        <mj-container>
+    <!-- move attributes to top when https://github.com/mjmlio/mjml/issues/1027 is fixed) -->
+    <mj-body
+        width="600px"
+        background-color="#eee"
+    >
+        
+        <mj-include path="_inc/iphone.mjml" />
+
+        <mj-include path="_inc/top.mjml" />
+
+        <mj-include path="_inc/simple.mjml" />
+
+        <mj-include path="_inc/divider.mjml" />
+        
+        <mj-include path="_inc/columns.mjml" />
+
+        <mj-include path="_inc/two-col-left.mjml" />
+
+        <mj-include path="_inc/two-col-right.mjml" />
+
+        <mj-include path="_inc/two-col-left.mjml" />
+        
+        <mj-include path="_inc/two-col-right.mjml" />
+
+        <mj-include path="_inc/simple.mjml" />
+
+        <mj-include path="_inc/columns-inline.mjml" />
+
+        <mj-include path="_inc/bottom.mjml" />
             
-            <mj-include path="_inc/iphone.mjml" />
-
-            <mj-include path="_inc/top.mjml" />
-
-            <mj-include path="_inc/simple.mjml" />
-
-            <mj-include path="_inc/divider.mjml" />
-            
-            <mj-include path="_inc/columns.mjml" />
-
-            <mj-include path="_inc/two-col-left.mjml" />
-
-            <mj-include path="_inc/two-col-right.mjml" />
-
-            <mj-include path="_inc/two-col-left.mjml" />
-            
-            <mj-include path="_inc/two-col-right.mjml" />
-
-            <mj-include path="_inc/simple.mjml" />
-
-            <mj-include path="_inc/columns-inline.mjml" />
-
-            <mj-include path="_inc/bottom.mjml" />
-            
-        </mj-container>
     </mj-body>
 </mjml>

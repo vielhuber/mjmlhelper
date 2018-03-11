@@ -58,7 +58,7 @@ then edit your smtp credentials in mjmlhelper.json for sending out emails:
 
 do your daily mjml stuff
 ```
-node ./node_modules/mjml/bin/mjml --watch index.mjml -o index.html
+node ./node_modules/mjml/bin/mjml -w index.mjml -o index.html
 ```
 
 send out mail
