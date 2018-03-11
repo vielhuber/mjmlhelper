@@ -5,10 +5,11 @@
   "main": "mjmlhelper.js",
   "dependencies": {
     "archiver": "^2.1.0",
-    "fs-extra": "^4.0.2",
+    "fs-extra": "^5.0.0",
     "ftp": "^0.3.10",
-    "mjml": "^3.3.5",
-    "nodemailer": "^4.3.0"
+    "mjml": "^4.0.0",
+    "nodemailer": "^4.3.0",
+    "npm": "^5.7.1"
   },
   "devDependencies": {},
   "scripts": {
