@@ -4,8 +4,8 @@
     >
 
         <mj-column
-            width="48%"
-            padding="2%"
+            width="50%"
+            padding="0% 2%"
             css-class="mobile-full-width"
         >
             <mj-image
@@ -14,8 +14,8 @@
         </mj-column>
 
         <mj-column
-            width="48%"
-            padding="2%"
+            width="50%"
+            padding="0% 2%"
             css-class="mobile-full-width"
         >
             <mj-text>

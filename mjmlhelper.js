@@ -46,7 +46,7 @@ class mjmlhelper
         let style_tag = '<style type="text/css">',
             pos = data.indexOf(style_tag)+style_tag.length;
         // set max width to container so that in cleverreach editor modules are good visible
-        data = data.substring(0, pos)+' .mj-container { max-width:600px;margin:0 auto; } '+data.substring(pos);
+        data = data.substring(0, pos)+' body > div:nth-child(1), body > div:nth-child(2) { max-width:600px;margin:0 auto; } '+data.substring(pos);
         // hide tinymce overlay that always goes in the way
         data = data.substring(0, pos)+' .mce-tinymce-inline.mce-floatpanel { display:none !important; } ' +data.substring(pos);
         // hide modal overlay
@@ -65,7 +65,7 @@ class mjmlhelper
         // gmx/web.de desktop: enable multi column layout
         for( var i = 0; i <= 100; i++ )
         {
-            data = data.split('.mj-column-per-'+i+' { width:'+i+'%!important; }').join('.mj-column-per-'+i+' { width:'+i+'%!important;max-width:'+i+'%; }');
+            data = data.split('.mj-column-per-'+i+' { width:'+i+'% !important; }').join('.mj-column-per-'+i+' { width:'+i+'% !important;max-width:'+i+'%; }');
         }
 
         // gmx/web.de mobile: slightly increase breakpoint
@@ -76,59 +76,45 @@ class mjmlhelper
 
     static attachLoops(data)
     {
-        let pos;
-
+        // first
+        data = data.replace(/<\/style>(\s*)(\n*)(\s*)<!--\[if mso \| IE\]>/g, '</style>\n\n\n\n<!--#loop #--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]>');
+        
         // mid
-        data = data.replace(/<!\[endif\]-->(\s*)(\n*)(\s*)<!--\[if mso \| IE\]>/g, '<![endif]-->\n\n\n\n<!--#/loopitem#--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]>');
+        data = data.replace(/<!--\[if mso \| IE\]>(\s*)(\n*)(\s*)<\/td>(\s*)(\n*)(\s*)<\/tr>(\s*)(\n*)(\s*)<\/table>(\s*)(\n*)(\s*)<table/g, '<!--[if mso | IE]></td></tr></table><![endif]-->\n\n\n\n<!--#/loopitem#--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]><table');
 
         // last
-        pos = data.lastIndexOf('<![endif]--></div>');
-        data = data.substring(pos, 0) + '<![endif]-->'+'\n\n\n\n<!--#/loopitem#--><!--#/loop#-->\n\n\n\n'+'</div>' + data.substring(pos+'<![endif]--></div>'.length);
+        data = data.replace(/<!\[endif\]-->(\s*)(\n*)(\s*)<\/div>(\s*)(\n*)(\s*)<\/body>/g, '<![endif]-->\n\n\n\n<!--#/loopitem#--><!--#/loop#-->\n\n\n\n</div></body>');
 
-        // first
-        pos = data.indexOf('<div class="mj-container"');
-        pos = data.indexOf('<!--[if mso | IE]>', pos);
-        data = data.substring(pos, 0) + '\n\n\n\n<!--#loop #--><!--#loopitem#-->\n\n\n\n' + data.substring(pos);
-        
         return data;
     }
 
-    static loopDetermineBegin(data, mid)
-    {
-        return data.substring(0, mid).lastIndexOf('<!--[if mso');
-    }
-
-    static loopDetermineEnd(data, mid)
-    {
-        let begin = data.lastIndexOf('<div', mid),
-            end = data.indexOf('</div>', mid)+'</div>'.length,
-            string = data.substring(begin, end);
-        // check string has more opening divs as closing divs
-        while( this.findAllPositions('<div', string).length != this.findAllPositions('</div>', string).length )
-        {
-            end = data.indexOf('</div>', end+1)+'</div>'.length;
-            string = data.substring(begin, end);
-        }
-        end = data.indexOf('<![endif]-->', end)+'<![endif]-->'.length
-        return end;     
-    }
 
     static attachHtmlTags(data)
     {
-        let positions = this.findAllPositions('<![endif]--><div', data);
-        let shift = 0;
+        let positions = this.findAllPositions(' outlook-group-fix', data),
+            shift = 0;
         positions.forEach((positions__value) =>
         {
-            let div_begin = data.indexOf('>', positions__value+shift+'<![endif]--><div'.length)+'>'.length;
-            let div_end = data.indexOf('</div><!--[if mso | IE]>', div_begin);
-            // only insert if this is no nested tags are inside
-            if( data.indexOf('<![endif]--><div', div_begin) > div_end ) 
+            let begin = data.indexOf('>', positions__value+shift)+'>'.length,
+                pointer = begin,
+                level = 1;
+            while(level != 0)
             {
-                data = data.substring(0, div_begin) + '<!--#html #-->' + data.substring(div_begin);
-                div_end += '<!--#html #-->'.length;
-                data = data.substring(0, div_end) + '<!--#/html#-->' + data.substring(div_end);
-                shift += '<!--#html #-->'.length+'<!--#/html#-->'.length;
+                if( data.substring(pointer, pointer+'<div'.length) === '<div' )
+                {
+                    level++;
+                }
+                if( data.substring(pointer, pointer+'</div>'.length) === '</div>' )
+                {
+                    level--;
+                }
+                pointer++;
             }
+            let end = pointer-1;
+            data = data.substring(0, begin) + '<!--#html #-->' + data.substring(begin);
+            end += '<!--#html #-->'.length;
+            data = data.substring(0, end) + '<!--#/html#-->' + data.substring(end);
+            shift += '<!--#html #-->'.length+'<!--#/html#-->'.length;
         });
         return data;
     }

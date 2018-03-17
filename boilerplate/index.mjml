@@ -4,7 +4,8 @@
         <mj-title>Betreff im Mailing</mj-title>
         <mj-preview>Previewtext im Mailing</mj-preview>
 
-        <mj-breakpoint width="480px" />
+        <!-- gmx/web.de mobile: slightly increase breakpoint from 480 to 500 -->
+        <mj-breakpoint width="500px" />
 
         <!-- custom fonts (only working for apple mail and iphone/ipad) -->
         <mj-font
