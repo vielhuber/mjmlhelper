@@ -30,6 +30,10 @@
                 align="center"
                 vertical-align="top"
             />
+            <mj-body
+                width="600px"
+                background-color="#eee"    
+            />
             <mj-wrapper
                 background-color="#ffffff"
                 padding="20px"
@@ -87,11 +91,7 @@
             }
         </mj-style>
     </mj-head>
-    <!-- move attributes to top when https://github.com/mjmlio/mjml/issues/1027 is fixed) -->
-    <mj-body
-        width="600px"
-        background-color="#eee"
-    >
+    <mj-body>
         
         <mj-include path="_inc/iphone.mjml" />
 
