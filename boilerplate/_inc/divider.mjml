@@ -1,29 +1,27 @@
-<mj-wrapper>
-    <mj-section>
-        <mj-column>
+<mj-section>
+    <mj-column>
 
-            <!-- a divider only can be aligned center -->
-            <!-- it should also not have a fixed width (because of iphone bug) -->
-            <!-- if it should have a fixed width, use mj-button instead (see below) -->
-            <mj-divider
-                border-width="1px" 
-                border-style="solid" 
-                border-color="#d3d3d3"
-            />
+        <!-- a divider only can be aligned center -->
+        <!-- it should also not have a fixed width (because of iphone bug) -->
+        <!-- if it should have a fixed width, use mj-button instead (see below) -->
+        <mj-divider
+            border-width="1px" 
+            border-style="solid" 
+            border-color="#d3d3d3"
+        />
 
-            <!-- to align a divider left, use an empty mj-button -->
-              <mj-button
-                border-bottom="1px solid #ff0000"
-                align="left"
-                width="90px"
-                padding-left="20px"
-                padding-right="20px"
-                padding-top="10px"
-                padding-bottom="10px"
-                background-color="transparent"
-                border-radius="0px"
-              ></mj-button>
+        <!-- to align a divider left, use an empty mj-button -->
+            <mj-button
+            border-bottom="1px solid #ff0000"
+            align="left"
+            width="90px"
+            padding-left="20px"
+            padding-right="20px"
+            padding-top="10px"
+            padding-bottom="10px"
+            background-color="transparent"
+            border-radius="0px"
+            ></mj-button>
 
-        </mj-column>
-    </mj-section>
-</mj-wrapper>
+    </mj-column>
+</mj-section>

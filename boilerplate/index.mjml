@@ -35,11 +35,11 @@
                 background-color="#eee"    
             />
             <mj-wrapper
+                padding="0px"                
                 background-color="#ffffff"
-                padding="20px"
             />
             <mj-section
-                padding="0px"
+                padding="20px"
             />
             <mj-text
                 font-size="16px"
@@ -89,33 +89,41 @@
                 text-decoration: none;
                 border: none;
             }
+            .box-shadow
+            {
+                box-shadow:0px 0px 30px 0px #cecece;
+            }
         </mj-style>
     </mj-head>
     <mj-body>
         
         <mj-include path="_inc/iphone.mjml" />
 
-        <mj-include path="_inc/top.mjml" />
+        <mj-wrapper
+            background-color="transparent"
+        >
+            <mj-include path="_inc/top.mjml" />
+        </mj-wrapper>
 
-        <mj-include path="_inc/simple.mjml" />
+        <mj-wrapper
+            css-class="box-shadow"
+        >
+            <mj-include path="_inc/simple.mjml" />
+            <mj-include path="_inc/divider.mjml" />        
+            <mj-include path="_inc/columns.mjml" />
+            <mj-include path="_inc/two-col-left.mjml" />
+            <mj-include path="_inc/two-col-right.mjml" />
+            <mj-include path="_inc/two-col-left.mjml" />        
+            <mj-include path="_inc/two-col-right.mjml" />
+            <mj-include path="_inc/simple.mjml" />
+            <mj-include path="_inc/columns-inline.mjml" />
+        </mj-wrapper>
 
-        <mj-include path="_inc/divider.mjml" />
-        
-        <mj-include path="_inc/columns.mjml" />
-
-        <mj-include path="_inc/two-col-left.mjml" />
-
-        <mj-include path="_inc/two-col-right.mjml" />
-
-        <mj-include path="_inc/two-col-left.mjml" />
-        
-        <mj-include path="_inc/two-col-right.mjml" />
-
-        <mj-include path="_inc/simple.mjml" />
-
-        <mj-include path="_inc/columns-inline.mjml" />
-
-        <mj-include path="_inc/bottom.mjml" />
+        <mj-wrapper
+            background-color="transparent"
+        >
+            <mj-include path="_inc/bottom.mjml" />
+        </mj-wrapper>
             
     </mj-body>
 </mjml>

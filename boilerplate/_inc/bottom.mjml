@@ -1,25 +1,21 @@
-<mj-wrapper
-    background-color="transparent"
->
-    <mj-section>
-        <mj-column>
-            <mj-text
-                mj-class="small strong"
-                padding-bottom="15px"
-            >
-                <!--#unsubscribe #-->
-                Sie haben diese E-Mail erhalten, weil Sie sich für den XXX Newsletter angemeldet haben.<br/>
-                Hier können Sie sich vom <a style="color:#000" href="{UNSUBSCRIBE}" target="_blank">Newsletter abmelden</a>.
-                <!--#/unsubscribe#-->
-            </mj-text>
-            <mj-text
-                mj-class="smallest"
-            >
-                <!--#aboutus #-->
-                Impressum<br/>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                <!--#/aboutus#-->
-            </mj-text>
-        </mj-column>
-    </mj-section>
-</mj-wrapper>
+<mj-section>
+    <mj-column>
+        <mj-text
+            mj-class="small strong"
+            padding-bottom="15px"
+        >
+            <!--#unsubscribe #-->
+            Sie haben diese E-Mail erhalten, weil Sie sich für den XXX Newsletter angemeldet haben.<br/>
+            Hier können Sie sich vom <a style="color:#000" href="{UNSUBSCRIBE}" target="_blank">Newsletter abmelden</a>.
+            <!--#/unsubscribe#-->
+        </mj-text>
+        <mj-text
+            mj-class="smallest"
+        >
+            <!--#aboutus #-->
+            Impressum<br/>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            <!--#/aboutus#-->
+        </mj-text>
+    </mj-column>
+</mj-section>
