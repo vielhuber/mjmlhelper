@@ -1,4 +1,6 @@
-<mj-section>
+<mj-section
+    background-color="transparent"
+>
     <mj-column>
         <mj-text
             mj-class="small strong"

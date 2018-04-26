@@ -36,10 +36,11 @@
             />
             <mj-wrapper
                 padding="0px"                
-                background-color="#ffffff"
+                background-color="transparent"
             />
             <mj-section
                 padding="20px"
+                background-color="#ffffff"
             />
             <mj-text
                 font-size="16px"
@@ -99,9 +100,7 @@
         
         <mj-include path="_inc/iphone.mjml" />
 
-        <mj-wrapper
-            background-color="transparent"
-        >
+        <mj-wrapper>
             <mj-include path="_inc/top.mjml" />
         </mj-wrapper>
 
@@ -119,9 +118,7 @@
             <mj-include path="_inc/columns-inline.mjml" />
         </mj-wrapper>
 
-        <mj-wrapper
-            background-color="transparent"
-        >
+        <mj-wrapper>
             <mj-include path="_inc/bottom.mjml" />
         </mj-wrapper>
             
