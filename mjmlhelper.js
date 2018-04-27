@@ -46,7 +46,7 @@ class mjmlhelper
         let style_tag = '<style type="text/css">',
             pos = data.indexOf(style_tag)+style_tag.length;
         // set max width to container so that in cleverreach editor modules are good visible
-        data = data.substring(0, pos)+' body > div:nth-child(1), body > div:nth-child(2) { max-width:600px;margin:0 auto; } '+data.substring(pos);
+        data = data.substring(0, pos)+' body[spellcheck="false"] > div:first-child, body[spellcheck="false"] > div:first-child + div { max-width:600px;margin:0 auto; } '+data.substring(pos);
         // hide tinymce overlay that always goes in the way
         data = data.substring(0, pos)+' .mce-tinymce-inline.mce-floatpanel { display:none !important; } ' +data.substring(pos);
         // hide modal overlay
