@@ -5,6 +5,12 @@
             text
         </mj-text>
 
+        <mj-text
+            css-class="mobile-hidden"
+        >
+            this is hidden on most mobile devices
+        </mj-text>
+
         <mj-image
             src="_assets/test.jpg"
         />

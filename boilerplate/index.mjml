@@ -83,6 +83,15 @@
                 font-weight="bold"
             />
         </mj-attributes>
+        <mj-style>      
+            @media all and (max-width: 500px)
+            {
+                .mobile-hidden
+                {
+                    display:none !important;
+                }
+            }
+        </mj-style>
         <mj-style inline="inline">
             .link-nostyle
             {
@@ -94,6 +103,7 @@
             {
                 box-shadow:0px 0px 30px 0px #cecece;
             }
+
         </mj-style>
     </mj-head>
     <mj-body>
