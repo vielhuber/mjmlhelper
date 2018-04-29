@@ -76,14 +76,30 @@ class mjmlhelper
 
     static attachLoops(data)
     {
+
+        /*
+        /* regex explanation:
+        /* simply escape "[", "]", "|", "/" with "\"
+        /* then replace possible whitespace/newlines with (\s*)(\n*)(\s*)
+        */
+
         // first
-        data = data.replace(/<\/style>(\s*)(\n*)(\s*)<!--\[if mso \| IE\]>/g, '</style>\n\n\n\n<!--#loop #--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]>');
-        
+        data = data.replace(
+            /<!--\[if mso \| IE\]>(\s*)(\n*)(\s*)<table role="presentation" border="0" cellpadding="0" cellspacing="0">(\s*)(\n*)(\s*)<tr>(\s*)(\n*)(\s*)<td(\s*)(\n*)(\s*)align="left"/g,
+            '<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><![endif]-->\n\n\n\n<!--#loop #--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]><tr><td align="left"'
+        );
+
         // mid
-        data = data.replace(/<!--\[if mso \| IE\]>(\s*)(\n*)(\s*)<\/td>(\s*)(\n*)(\s*)<\/tr>(\s*)(\n*)(\s*)<\/table>(\s*)(\n*)(\s*)<table/g, '<!--[if mso | IE]></td></tr></table><![endif]-->\n\n\n\n<!--#/loopitem#--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]><table');
+        data = data.replace(
+            /<!--\[if mso \| IE\]>(\s*)(\n*)(\s*)<\/td>(\s*)(\n*)(\s*)<\/tr>(\s*)(\n*)(\s*)<\/table>(\s*)(\n*)(\s*)<\/td>(\s*)(\n*)(\s*)<\/tr>(\s*)(\n*)(\s*)<tr>(\s*)(\n*)(\s*)<td(\s*)(\n*)(\s*) align="left"/g,
+            '<!--[if mso | IE]></td></tr></table></td></tr><![endif]-->\n\n\n\n<!--#/loopitem#--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]><tr><td align="left"'
+        );
 
         // last
-        data = data.replace(/<!\[endif\]-->(\s*)(\n*)(\s*)<\/div>(\s*)(\n*)(\s*)<\/body>/g, '<![endif]-->\n\n\n\n<!--#/loopitem#--><!--#/loop#-->\n\n\n\n</div></body>');
+        data = data.replace(
+            /<!--\[if mso \| IE\]>(\s*)(\n*)(\s*)<\/td>(\s*)(\n*)(\s*)<\/tr>(\s*)(\n*)(\s*)<\/table>(\s*)(\n*)(\s*)<\/td>(\s*)(\n*)(\s*)<\/tr>(\s*)(\n*)(\s*)<\/table>(\s*)(\n*)(\s*)<!\[endif\]-->/g,
+            '<!--[if mso | IE]></td></tr></table></td></tr><![endif]-->\n\n\n\n<!--#/loopitem#--><!--#/loop#-->\n\n\n\n<!--[if mso | IE]></table><![endif]-->'
+        );
 
         return data;
     }
