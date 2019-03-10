@@ -85,14 +85,14 @@ class mjmlhelper
 
         // first
         data = data.replace(
-            /<!--\[if mso \| IE\]>(\s*)(\n*)(\s*)<table role="presentation" border="0" cellpadding="0" cellspacing="0">(\s*)(\n*)(\s*)<tr>(\s*)(\n*)(\s*)<td(\s*)(\n*)(\s*)align="left"/g,
-            '<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><![endif]-->\n\n\n\n<!--#loop #--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]><tr><td align="left"'
+            /<!--\[if mso \| IE\]>(\s*)(\n*)(\s*)<table role="presentation" border="0" cellpadding="0" cellspacing="0">(\s*)(\n*)(\s*)<tr>(\s*)(\n*)(\s*)<td(\s*)(\n*)(\s*)align="/g,
+            '<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><![endif]-->\n\n\n\n<!--#loop #--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]><tr><td align="'
         );
 
         // mid
         data = data.replace(
-            /<!--\[if mso \| IE\]>(\s*)(\n*)(\s*)<\/td>(\s*)(\n*)(\s*)<\/tr>(\s*)(\n*)(\s*)<\/table>(\s*)(\n*)(\s*)<\/td>(\s*)(\n*)(\s*)<\/tr>(\s*)(\n*)(\s*)<tr>(\s*)(\n*)(\s*)<td(\s*)(\n*)(\s*) align="left"/g,
-            '<!--[if mso | IE]></td></tr></table></td></tr><![endif]-->\n\n\n\n<!--#/loopitem#--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]><tr><td align="left"'
+            /<!--\[if mso \| IE\]>(\s*)(\n*)(\s*)<\/td>(\s*)(\n*)(\s*)<\/tr>(\s*)(\n*)(\s*)<\/table>(\s*)(\n*)(\s*)<\/td>(\s*)(\n*)(\s*)<\/tr>(\s*)(\n*)(\s*)<tr>(\s*)(\n*)(\s*)<td(\s*)(\n*)(\s*) align="/g,
+            '<!--[if mso | IE]></td></tr></table></td></tr><![endif]-->\n\n\n\n<!--#/loopitem#--><!--#loopitem#-->\n\n\n\n<!--[if mso | IE]><tr><td align="'
         );
 
         // last
