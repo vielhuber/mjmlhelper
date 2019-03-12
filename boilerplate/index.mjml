@@ -1,136 +1,89 @@
 <mjml owa="desktop">
-    <mj-head>
+  <mj-head>
 
-        <mj-title>Betreff im Mailing</mj-title>
-        <mj-preview>Previewtext im Mailing</mj-preview>
+    <mj-title>Betreff im Mailing</mj-title>
+    <mj-preview>Previewtext im Mailing</mj-preview>
 
-        <!-- gmx/web.de mobile: slightly increase breakpoint from 480 to 500 -->
-        <mj-breakpoint width="500px" />
+    <!-- gmx/web.de mobile: slightly increase breakpoint from 480 to 500 -->
+    <mj-breakpoint width="500px" />
 
-        <!-- custom fonts (only working for apple mail and iphone/ipad) -->
-        <mj-font
-            name="Roboto"
-            href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900"
-        />
-        <mj-style>
-            @font-face
-            {
-              font-family: 'Custom';
-              font-style: normal;
-              font-weight: 400;
-              src: url('_assets/font.woff2') format('woff2');
-            }
-        </mj-style>
+    <!-- custom fonts (only working for apple mail and iphone/ipad) -->
+    <mj-font name="Roboto" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" />
+    <mj-style>
+      @font-face {
+        font-family: 'Custom';
+        font-style: normal;
+        font-weight: 400;
+        src: url('_assets/font.woff2') format('woff2');
+      }
+    </mj-style>
 
-        <mj-attributes>
-            <mj-all
-                padding="0"
-                font-family="Roboto, Custom, sans-serif"
-                color="#333333"
-                align="center"
-                vertical-align="top"
-            />
-            <mj-body
-                width="600px"
-                background-color="#eee"    
-            />
-            <mj-wrapper
-                padding="0px"                
-                background-color="transparent"
-            />
-            <mj-section
-                padding="20px"
-                background-color="#ffffff"
-            />
-            <mj-text
-                font-size="16px"
-                line-height="24px"
-                font-weight="400"
-            />
-            <mj-image
-                width="560px"
-                align="center"
-            />
-            <mj-button
-                background-color="#1c58a0"
-                color="white" 
-                font-size="14px"
-                align="center"
-                border="none"
-                border-radius="5px"
-                font-weight="bold"
-            />
-            <mj-divider
-                border-width="1px" 
-                border-style="solid" 
-                border-color="#d3d3d3"
-            />
-            <mj-class
-                name="big"
-                font-size="18px"
-            />
-            <mj-class
-                name="small"
-                font-size="12px"
-            />
-            <mj-class
-                name="smallest"
-                font-size="9px"
-                line-height="13px"
-            />
-            <mj-class
-                name="strong"
-                font-weight="bold"
-            />
-        </mj-attributes>
-        <mj-style>      
-            @media all and (max-width: 500px)
-            {
-                .mobile-hidden
-                {
-                    display:none !important;
-                }
-            }
-        </mj-style>
-        <mj-style inline="inline">
-            .link-nostyle
-            {
-                color: #333333;
-                text-decoration: none;
-                border: none;
-            }
-            .box-shadow
-            {
-                box-shadow:0px 0px 30px 0px #cecece;
-            }
+    <mj-attributes>
+      <mj-all padding="0" font-family="Roboto, Custom, sans-serif" color="#333333" align="center" vertical-align="top" />
+      <mj-body width="600px" background-color="#eee" />
+      <mj-wrapper padding="0px" background-color="transparent" />
+      <mj-section padding="20px" background-color="#ffffff" />
+      <mj-text font-size="16px" line-height="24px" font-weight="400" />
+      <mj-image width="560px" align="center" />
+      <mj-button background-color="#1c58a0" color="white" font-size="14px" align="center" border="none" border-radius="5px" font-weight="bold" />
+      <mj-divider border-width="1px" border-style="solid" border-color="#d3d3d3" />
+      <mj-class name="big" font-size="18px" />
+      <mj-class name="small" font-size="12px" />
+      <mj-class name="smallest" font-size="9px" line-height="13px" />
+      <mj-class name="strong" font-weight="bold" />
+    </mj-attributes>
+    <mj-style>
+      @media all and (max-width: 500px) {
+        .mobile-hidden {
+          display: none !important;
+        }
+      }
+    </mj-style>
+    <mj-style inline="inline">
+      .link-nostyle {
+        color: #333333;
+        text-decoration: none;
+        border: none;
+      }
 
-        </mj-style>
-    </mj-head>
-    <mj-body>
-        
-        <mj-include path="_inc/iphone.mjml" />
+      .box-shadow {
+        box-shadow: 0px 0px 30px 0px #cecece;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body>
 
-        <mj-wrapper>
-            <mj-include path="_inc/top.mjml" />
-        </mj-wrapper>
+    <mj-include path="_inc/iphone.mjml" />
 
-        <mj-wrapper
-            css-class="box-shadow"
-        >
-            <mj-include path="_inc/simple.mjml" />
-            <mj-include path="_inc/divider.mjml" />        
-            <mj-include path="_inc/columns.mjml" />
-            <mj-include path="_inc/two-col-left.mjml" />
-            <mj-include path="_inc/two-col-right.mjml" />
-            <mj-include path="_inc/two-col-left.mjml" />        
-            <mj-include path="_inc/two-col-right.mjml" />
-            <mj-include path="_inc/simple.mjml" />
-            <mj-include path="_inc/columns-inline.mjml" />
-        </mj-wrapper>
+    <mj-wrapper>
+      <mj-include path="_inc/top.mjml" />
+    </mj-wrapper>
 
-        <mj-wrapper>
-            <mj-include path="_inc/bottom.mjml" />
-        </mj-wrapper>
-            
-    </mj-body>
+    <mj-wrapper css-class="box-shadow">
+      <mj-include path="_inc/cr_loop_begin.mjml" />
+      <mj-include path="_inc/simple.mjml" />
+      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <mj-include path="_inc/divider.mjml" />
+      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <mj-include path="_inc/columns.mjml" />
+      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <mj-include path="_inc/two-col-left.mjml" />
+      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <mj-include path="_inc/two-col-right.mjml" />
+      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <mj-include path="_inc/two-col-left.mjml" />
+      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <mj-include path="_inc/two-col-right.mjml" />
+      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <mj-include path="_inc/simple.mjml" />
+      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <mj-include path="_inc/columns-inline.mjml" />
+      <mj-include path="_inc/cr_loop_end.mjml" />
+    </mj-wrapper>
+
+    <mj-wrapper>
+      <mj-include path="_inc/bottom.mjml" />
+    </mj-wrapper>
+
+  </mj-body>
 </mjml>

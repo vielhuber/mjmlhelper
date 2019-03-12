@@ -1,24 +1,37 @@
 <!-- this is done inline because it should be AFTER all other styles -->
 <mj-raw>
-    <style type="text/css">
-        /* iphone: full width images */
-        @media only screen and (max-width:500px)
-        {
-            .mobile-full-width table,
-            .mobile-full-width td,
-            .mobile-full-width td img { min-width:100%; }
-        }
-    </style>
-    <style type="text/css">
-        /* iphone: increase font sizes */
-        @media only screen and (max-width:500px)
-        {
-            *[style*="font-size:16"],
-            *[style*="font-size: 16"] { font-size:20px !important;line-height:24px !important; }
-            *[style*="font-size:13"],
-            *[style*="font-size: 13"] { font-size:17px !important;line-height:22px !important; }
-            *[style*="font-size:10"],
-            *[style*="font-size: 10"] { font-size:15px !important;line-height:20px !important; }
-        }
-    </style> 
+  <style type="text/css">
+    /* iphone: full width images */
+    @media only screen and (max-width:500px) {
+
+      .mobile-full-width table,
+      .mobile-full-width td,
+      .mobile-full-width td img {
+        min-width: 100%;
+      }
+    }
+  </style>
+  <style type="text/css">
+    /* iphone: increase font sizes */
+    @media only screen and (max-width:500px) {
+
+      *[style*="font-size:16"],
+      *[style*="font-size: 16"] {
+        font-size: 20px !important;
+        line-height: 24px !important;
+      }
+
+      *[style*="font-size:13"],
+      *[style*="font-size: 13"] {
+        font-size: 17px !important;
+        line-height: 22px !important;
+      }
+
+      *[style*="font-size:10"],
+      *[style*="font-size: 10"] {
+        font-size: 15px !important;
+        line-height: 20px !important;
+      }
+    }
+  </style>
 </mj-raw>

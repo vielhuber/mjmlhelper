@@ -1,24 +1,20 @@
 <mj-section>
-    <mj-column>
+  <mj-column>
 
-        <mj-text>
-            text
-        </mj-text>
+    <mj-text>
+      text
+    </mj-text>
 
-        <mj-text
-            css-class="mobile-hidden"
-        >
-            this is hidden on most mobile devices
-        </mj-text>
+    <mj-text css-class="mobile-hidden">
+      this is hidden on most mobile devices
+    </mj-text>
 
-        <mj-image
-            src="_assets/test.jpg"
-        />
+    <mj-image src="_assets/test.jpg" />
 
-        <mj-text>
-            Dies ist ein echter <a class="link-nostyle" href="https://test.de" target="_blank">Link</a>.
-            Dies ist eine Adresse <a href="" class="link-nostyle">Auenstraße 6, 80469 München</a>, die automatisch zum Link gemacht wird.
-        </mj-text>
+    <mj-text>
+      Dies ist ein echter <a class="link-nostyle" href="https://test.de" target="_blank">Link</a>.
+      Dies ist eine Adresse <a href="" class="link-nostyle">Auenstraße 6, 80469 München</a>, die automatisch zum Link gemacht wird.
+    </mj-text>
 
-    </mj-column>
+  </mj-column>
 </mj-section>

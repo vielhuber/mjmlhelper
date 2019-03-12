@@ -1,39 +1,27 @@
 <mj-section>
 
-    <mj-column
-        width="25%"
-        padding="0% 2%"
-    >
-        <mj-text>
-            test
-        </mj-text>
-    </mj-column>
+  <mj-column width="25%" padding="0% 2%">
+    <mj-text>
+      test
+    </mj-text>
+  </mj-column>
 
-    <mj-column
-        width="25%"
-        padding="0% 2%"
-    >
-        <mj-text>
-            test
-        </mj-text>
-    </mj-column>
+  <mj-column width="25%" padding="0% 2%">
+    <mj-text>
+      test
+    </mj-text>
+  </mj-column>
 
-    <mj-column
-        width="25%"
-        padding="0% 2%"
-    >
-        <mj-text>
-            test
-        </mj-text>
-    </mj-column>
+  <mj-column width="25%" padding="0% 2%">
+    <mj-text>
+      test
+    </mj-text>
+  </mj-column>
 
-    <mj-column
-        width="25%"
-        padding="0% 2%"
-    >
-        <mj-text>
-            test
-        </mj-text>
-    </mj-column>
+  <mj-column width="25%" padding="0% 2%">
+    <mj-text>
+      test
+    </mj-text>
+  </mj-column>
 
 </mj-section>

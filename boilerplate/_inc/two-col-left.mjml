@@ -1,23 +1,11 @@
-<mj-section
-    direction="ltr"
->
-    <mj-column
-        width="50%"
-        padding="0% 2%"
-        css-class="mobile-full-width"
-    >
-        <mj-image
-            src="_assets/test.jpg"
-        />
-    </mj-column>
+<mj-section direction="ltr">
+  <mj-column width="50%" padding="0% 2%" css-class="mobile-full-width">
+    <mj-image src="_assets/test.jpg" />
+  </mj-column>
 
-    <mj-column
-        width="50%"
-        padding="0% 2%"
-        css-class="mobile-full-width"
-    >
-        <mj-text>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
-        </mj-text>
-    </mj-column>
+  <mj-column width="50%" padding="0% 2%" css-class="mobile-full-width">
+    <mj-text>
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+    </mj-text>
+  </mj-column>
 </mj-section>
