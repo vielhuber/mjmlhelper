@@ -1,12 +1,12 @@
 # 🌈 mjmlhelper 🌈
 
-mjmlhelper is a little toolbox that...
+mjmlhelper is a little toolbox for [mjml](https://mjml.io/) (v4.4) that...
 
 - sends mails from the command line for testing and production,
 - automatically inlines or uploads images for testing purposes,
 - converts your template to the drag&drop editor of [CleverReach](https://www.cleverreach.com/en/).
 
-it also includes a small boilerplate and some nifty updates for [mjml](https://mjml.io/) (v4).
+it also includes a small boilerplate and some nifty updates for mjml.
 
 ## installation
 
