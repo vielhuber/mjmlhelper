@@ -11,8 +11,8 @@ it also includes a small boilerplate and some nifty updates for [mjml](https://m
 ## installation
 
 ```
-
-npm install --save-dev mjmlhelper
+npm init -y
+npm install mjmlhelper
 ```
 
 ## setup
