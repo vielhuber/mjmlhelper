@@ -11,7 +11,8 @@ it also includes a small boilerplate and some nifty updates for [mjml](https://m
 ## installation
 
 ```
-yarn init -y && yarn add mjmlhelper
+
+npm install --save-dev mjmlhelper
 ```
 
 ## setup
