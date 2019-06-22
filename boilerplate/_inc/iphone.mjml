@@ -4,6 +4,26 @@
     /* iphone: full width images */
     @media only screen and (max-width:500px) {
 
+      /* option 1: all percentage columns */
+      *[class*="mj-column-per-"] table,
+      *[class*="mj-column-per-"] td,
+      *[class*="mj-column-per-"] td img {
+        min-width: 100%;
+      }
+
+      /* option 2: all columns except some manual */
+      *[class*="mj-column-"] table,
+      *[class*="mj-column-"] td,
+      *[class*="mj-column-"] td img {
+        min-width: 100%;
+      }
+      *[class*="mj-column-"].no-mobile-full-width table,
+      *[class*="mj-column-"].no-mobile-full-width td,
+      *[class*="mj-column-"].no-mobile-full-width td img {
+        min-width: 0;
+      }
+
+      /* option 3: manual class */
       .mobile-full-width table,
       .mobile-full-width td,
       .mobile-full-width td img {
@@ -12,7 +32,7 @@
     }
   </style>
   <style type="text/css">
-    /* iphone: increase font sizes */
+    /* iphone: modify font sizes */
     @media only screen and (max-width:500px) {
 
       *[style*="font-size:16"],
@@ -31,6 +51,15 @@
       *[style*="font-size: 10"] {
         font-size: 15px !important;
         line-height: 20px !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    /* iphone: text align center */
+    @media only screen and (max-width:500px) {
+
+      *[style*="text-align:left"] {
+        text-align: center !important;
       }
     }
   </style>

@@ -67,6 +67,7 @@ class mjmlhelper {
     }
 
     static doSomeHacks(data) {
+        
         // gmx/web.de desktop: enable multi column layout
         for (var i = 0; i <= 100; i++) {
             data = data
@@ -76,9 +77,21 @@ class mjmlhelper {
                 );
         }
 
-        // gmx/web.de mobile: slightly increase breakpoint
-        data = data.split('(min-width:480px)').join('(min-width:500px)');
+        // prevent times new roman on outlook <2016
+        let pos = data.indexOf('font-family:')
+        if( pos > -1 )
+        {
+            let font_family = data.substring( pos+('font-family:').length, data.indexOf(';', pos) ).trim();
+            data = data.replace('<style type="text/css">', '<!--[if mso]><style type="text/css">body, table, td, h1, h2, h3, h4, h5, h6, p, span, strong, div, a { font-family: '+font_family+', Arial, Helvetica, sans-serif !important; }</style><![endif]-->\n<style type="text/css">');
+        }
 
+        return data;
+    }
+
+    static replaceDummyLinks(data) {
+        data = data.split('href="#"').join('href="https://test.de"')
+            .split('href="{ONLINE_VERSION}"').join('href="https://test.de"')
+            .split('href="{UNSUBSCRIBE}"').join('href="https://test.de"');
         return data;
     }
 
@@ -158,6 +171,9 @@ class mjmlhelper {
         // call functions from cleverreach converter (only relevant ones)
         message.html = this.addCleverReachStyles(message.html);
         message.html = this.doSomeHacks(message.html);
+
+        // add specific mail modifications
+        message.html = this.replaceDummyLinks(message.html);
 
         fs.writeFileSync(process.cwd() + '/index-converted.html', message.html, 'utf-8');
 

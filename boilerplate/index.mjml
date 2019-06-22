@@ -4,8 +4,8 @@
     <mj-title>Betreff im Mailing</mj-title>
     <mj-preview>Previewtext im Mailing</mj-preview>
 
-    <!-- gmx/web.de mobile: slightly increase breakpoint from 480 to 500 -->
-    <mj-breakpoint width="500px" />
+    <!-- set manual breakpoint (important for gmx/web.de mobile) -->
+    <mj-breakpoint width="480px" />
 
     <!-- custom fonts (only working for apple mail and iphone/ipad) -->
     <mj-font name="Roboto" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" />
@@ -16,7 +16,7 @@
         font-weight: 400;
         src: url('_assets/font.woff2') format('woff2');
       }
-    </mj-style>
+    </mj-style>    
 
     <mj-attributes>
       <mj-all padding="0" font-family="Roboto, Custom, sans-serif" color="#333333" align="center" vertical-align="top" />
@@ -62,6 +62,8 @@
     <mj-wrapper css-class="box-shadow">
       <mj-include path="_inc/cr_loop_begin.mjml" />
       <mj-include path="_inc/simple.mjml" />
+      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <mj-include path="_inc/button.mjml" />
       <mj-include path="_inc/cr_loop_mid.mjml" />
       <mj-include path="_inc/divider.mjml" />
       <mj-include path="_inc/cr_loop_mid.mjml" />

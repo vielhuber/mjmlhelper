@@ -52,7 +52,7 @@
     
         
     <style type="text/css">
-      @media only screen and (min-width:500px) {
+      @media only screen and (min-width:480px) {
         .mj-column-per-100 { width:100% !important; max-width: 100%; }
 .mj-column-per-25 { width:25% !important; max-width: 25%; }
 .mj-column-per-50 { width:50% !important; max-width: 50%; }
@@ -68,7 +68,7 @@
         
         
 
-    @media only screen and (max-width:500px) {
+    @media only screen and (max-width:480px) {
       table.full-width-mobile { width: 100% !important; }
       td.full-width-mobile { width: auto !important; }
     }
@@ -84,7 +84,7 @@
           display: none !important;
         }
       }</style>
-        <!-- gmx/web.de mobile: slightly increase breakpoint from 480 to 500 -->
+        <!-- set manual breakpoint (important for gmx/web.de mobile) -->
 <!-- custom fonts (only working for apple mail and iphone/ipad) -->
       </head>
       <body style="background-color:#eeeeee;">
@@ -99,6 +99,26 @@
     /* iphone: full width images */
     @media only screen and (max-width:500px) {
 
+      /* option 1: all percentage columns */
+      *[class*="mj-column-per-"] table,
+      *[class*="mj-column-per-"] td,
+      *[class*="mj-column-per-"] td img {
+        min-width: 100%;
+      }
+
+      /* option 2: all columns except some manual */
+      *[class*="mj-column-"] table,
+      *[class*="mj-column-"] td,
+      *[class*="mj-column-"] td img {
+        min-width: 100%;
+      }
+      *[class*="mj-column-"].no-mobile-full-width table,
+      *[class*="mj-column-"].no-mobile-full-width td,
+      *[class*="mj-column-"].no-mobile-full-width td img {
+        min-width: 0;
+      }
+
+      /* option 3: manual class */
       .mobile-full-width table,
       .mobile-full-width td,
       .mobile-full-width td img {
@@ -107,7 +127,7 @@
     }
   </style>
   <style type="text/css">
-    /* iphone: increase font sizes */
+    /* iphone: modify font sizes */
     @media only screen and (max-width:500px) {
 
       *[style*="font-size:16"],
@@ -126,6 +146,15 @@
       *[style*="font-size: 10"] {
         font-size: 15px !important;
         line-height: 20px !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    /* iphone: text align center */
+    @media only screen and (max-width:500px) {
+
+      *[style*="text-align:left"] {
+        text-align: center !important;
       }
     }
   </style>
@@ -341,6 +370,95 @@
                 
       <div style="font-family:Roboto, Custom, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:center;color:#333333;">Dies ist ein echter <a class="link-nostyle" href="https://test.de" target="_blank" style="color: #333333; text-decoration: none; border: none;">Link</a>.
       Dies ist eine Adresse <a href class="link-nostyle" style="color: #333333; text-decoration: none; border: none;">Auenstraße 6, 80469 München</a>, die automatisch zum Link gemacht wird.</div>
+    
+              </td>
+            </tr>
+          
+      </table>
+    
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    
+      </div>
+    
+          <!--[if mso | IE]>
+            </td>
+          
+        </tr>
+      
+                  </table>
+                <![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+    
+      
+      <!--[if mso | IE]>
+          </td>
+        </tr>
+      </table>
+      
+              </td>
+            </tr>
+          <![endif]-->
+        <!--#/loopitem#-->
+  <!--#loopitem#-->
+          <!--[if mso | IE]>
+            <tr>
+              <td
+                 align="center" class="" width="600px"
+              >
+          
+      <table
+         align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+      >
+        <tr>
+          <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+      <![endif]-->
+    
+      
+      <div style="background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:600px;">
+        
+        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px;text-align:center;">
+                <!--[if mso | IE]>
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                
+        <tr>
+      
+            <td
+               align="center" class="" style="vertical-align:top;width:560px;"
+            >
+          <![endif]-->
+            
+      <div class="mj-column-per-100 outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+        <tbody>
+          <tr>
+            <td style="vertical-align:top;padding:0;">
+              
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style width="100%">
+        <!-- always provide an explicit link (otherwise outlook.com strips those tags) -->
+            <tr>
+              <td align="center" vertical-align="top" style="font-size:0px;padding:0;word-break:break-word;">
+                
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
+        <tr>
+          <td align="center" bgcolor="#1c58a0" role="presentation" style="border:none;border-radius:5px;cursor:auto;mso-padding-alt:10px 25px;background:#1c58a0;" valign="top">
+            <a href="https://red.de" style="display:inline-block;background:#1c58a0;color:white;font-family:Roboto, Custom, sans-serif;font-size:14px;font-weight:bold;line-height:120%;Margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:5px;" target="_blank">
+              Button
+            </a>
+          </td>
+        </tr>
+      </table>
     
               </td>
             </tr>
@@ -743,11 +861,11 @@
             </td>
           
             <td
-               align="center" class="mobile-full-width-outlook" style="vertical-align:top;width:280px;"
+               align="center" class="no-mobile-full-width-outlook" style="vertical-align:top;width:280px;"
             >
           <![endif]-->
             
-      <div class="mj-column-per-50 outlook-group-fix mobile-full-width" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+      <div class="mj-column-per-50 outlook-group-fix no-mobile-full-width" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
         
       <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
         <tbody>
@@ -993,11 +1111,11 @@
             </td>
           
             <td
-               align="center" class="mobile-full-width-outlook" style="vertical-align:top;width:280px;"
+               align="center" class="no-mobile-full-width-outlook" style="vertical-align:top;width:280px;"
             >
           <![endif]-->
             
-      <div class="mj-column-per-50 outlook-group-fix mobile-full-width" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+      <div class="mj-column-per-50 outlook-group-fix no-mobile-full-width" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
         
       <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
         <tbody>
