@@ -63,6 +63,11 @@ class mjmlhelper {
         // now @ms-viewport and @viewport fails on gmail: remove that rule
         data = data.replace('@-ms-viewport {', '.disabled-ms-viewport {');
         data = data.replace('@viewport {', '.disabled-viewport {');
+        // fix loop comments (spaces are inserted by mjml)
+        data = data.split('<!-- #loop# -->').join('<!--#loop#-->');
+        data = data.split('<!-- #loopitem# -->').join('<!--#loopitem#-->');
+        data = data.split('<!-- #/loopitem# -->').join('<!--#/loopitem#-->');
+        data = data.split('<!-- #/loop# -->').join('<!--#/loop#-->');
         return data;
     }
 
@@ -88,7 +93,7 @@ class mjmlhelper {
             data = data.substring(0, pos2) + '<!--[if mso]><div class="outlook"><![endif]-->' + data.substring(pos2);
             data = data.replace('</body>','<!--[if mso]></div><![endif]--></body>');
         }
-        
+
         return data;
     }
 
