@@ -53,34 +53,34 @@
   </mj-head>
   <mj-body>
 
-    <mj-include path="_inc/iphone.mjml" />
+    <mj-include path="_inc/responsive.mjml" />
 
     <mj-wrapper>
       <mj-include path="_inc/top.mjml" />
     </mj-wrapper>
 
     <mj-wrapper css-class="box-shadow">
-      <mj-include path="_inc/cr_loop_begin.mjml" />
+      <!--#loop#--><!--#loopitem#-->
       <mj-include path="_inc/simple.mjml" />
-      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <!--#/loopitem#--><!--#loopitem#-->
       <mj-include path="_inc/button.mjml" />
-      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <!--#/loopitem#--><!--#loopitem#-->
       <mj-include path="_inc/divider.mjml" />
-      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <!--#/loopitem#--><!--#loopitem#-->
       <mj-include path="_inc/columns.mjml" />
-      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <!--#/loopitem#--><!--#loopitem#-->
       <mj-include path="_inc/two-col-left.mjml" />
-      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <!--#/loopitem#--><!--#loopitem#-->
       <mj-include path="_inc/two-col-right.mjml" />
-      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <!--#/loopitem#--><!--#loopitem#-->
       <mj-include path="_inc/two-col-left.mjml" />
-      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <!--#/loopitem#--><!--#loopitem#-->
       <mj-include path="_inc/two-col-right.mjml" />
-      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <!--#/loopitem#--><!--#loopitem#-->
       <mj-include path="_inc/simple.mjml" />
-      <mj-include path="_inc/cr_loop_mid.mjml" />
+      <!--#/loopitem#--><!--#loopitem#-->
       <mj-include path="_inc/columns-inline.mjml" />
-      <mj-include path="_inc/cr_loop_end.mjml" />
+      <!--#/loopitem#--><!--#/loop#-->
     </mj-wrapper>
 
     <mj-wrapper>

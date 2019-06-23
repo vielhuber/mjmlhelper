@@ -67,7 +67,7 @@ class mjmlhelper {
     }
 
     static doSomeHacks(data) {
-        
+
         // gmx/web.de desktop: enable multi column layout
         for (var i = 0; i <= 100; i++) {
             data = data
@@ -82,9 +82,13 @@ class mjmlhelper {
         if( pos > -1 )
         {
             let font_family = data.substring( pos+('font-family:').length, data.indexOf(';', pos) ).trim();
-            data = data.replace('<style type="text/css">', '<!--[if mso]><style type="text/css">body, table, td, h1, h2, h3, h4, h5, h6, p, span, strong, div, a { font-family: '+font_family+', Arial, Helvetica, sans-serif !important; }</style><![endif]-->\n<style type="text/css">');
+            // we have to do this exactly like this, because cleverreach merges together all styles and ignores mso
+            data = data.replace('<style type="text/css">', '<style type="text/css">.outlook, .outlook table, .outlook td, .outlook h1, .outlook h2, .outlook h3, .outlook h4, .outlook h5, .outlook h6, .outlook p, .outlook span, .outlook strong, .outlook div, .outlook a { font-family: '+font_family+', Arial, Helvetica, sans-serif !important; }</style>\n<style type="text/css">');
+            let pos2 = data.indexOf('>', data.indexOf('<body'))+'>'.length;
+            data = data.substring(0, pos2) + '<!--[if mso]><div class="outlook"><![endif]-->' + data.substring(pos2);
+            data = data.replace('</body>','<!--[if mso]></div><![endif]--></body>');
         }
-
+        
         return data;
     }
 
