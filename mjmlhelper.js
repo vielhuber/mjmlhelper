@@ -34,6 +34,7 @@ class mjmlhelper {
     static modifyHtml(data) {
         data = this.addCleverReachStyles(data);
         data = this.doSomeHacks(data);
+        data = this.replaceDummyLinks(data, false);
         data = this.moveImagesFolder(data);
         data = this.attachHtmlTags(data);
         return data;
@@ -97,10 +98,12 @@ class mjmlhelper {
         return data;
     }
 
-    static replaceDummyLinks(data) {
-        data = data.split('href="#"').join('href="https://test.de"')
-            .split('href="{ONLINE_VERSION}"').join('href="https://test.de"')
-            .split('href="{UNSUBSCRIBE}"').join('href="https://test.de"');
+    static replaceDummyLinks(data, with_codes = true) {
+        data = data.split('href="#"').join('href="https://test.de"');
+        if( with_codes === true )
+        {
+            data = data.split('href="{ONLINE_VERSION}"').join('href="https://test.de"').split('href="{UNSUBSCRIBE}"').join('href="https://test.de"');
+        }
         return data;
     }
 
@@ -182,7 +185,7 @@ class mjmlhelper {
         message.html = this.doSomeHacks(message.html);
 
         // add specific mail modifications
-        message.html = this.replaceDummyLinks(message.html);
+        message.html = this.replaceDummyLinks(message.html, true);
 
         fs.writeFileSync(process.cwd() + '/index-converted.html', message.html, 'utf-8');
 
