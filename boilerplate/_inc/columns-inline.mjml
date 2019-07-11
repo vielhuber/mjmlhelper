@@ -7,7 +7,8 @@
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
     </mj-text>
 
-    <mj-text padding="40px 0">
+    <!-- use this instead of mj-group; also include line-height:0px to prevent outlook from cutting off images -->
+    <mj-text padding="40px 0" line-height="0px">
       <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/test.jpg" width="32" /></a>&nbsp;
       <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/test.jpg" width="32" /></a>&nbsp;
       <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/test.jpg" width="32" /></a>&nbsp;
