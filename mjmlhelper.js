@@ -83,6 +83,13 @@ class mjmlhelper {
                 );
         }
 
+        // yahoo.com has a weird bug: when using google fonts, @import gets stripped out and the follow rule is killed; circumvent that
+        if( data.indexOf('@import url(') > -1 )
+        {
+            let pos = data.indexOf(');', data.indexOf('@import url('));
+            data = data.substring(0, pos+2) + ' .dummyclass{} ' + data.substring(pos+2);
+        }
+
         // prevent times new roman on outlook <2016
         let pos = data.indexOf('font-family:')
         if( pos > -1 )
