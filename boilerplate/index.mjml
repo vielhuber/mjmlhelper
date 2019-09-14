@@ -1,8 +1,8 @@
 <mjml owa="desktop">
   <mj-head>
 
-    <mj-title>Betreff im Mailing</mj-title>
-    <mj-preview>Previewtext im Mailing</mj-preview>
+    <mj-title>{CAMPAIGN}</mj-title>
+    <mj-preview>{CAMPAIGN}</mj-preview>
 
     <!-- set manual breakpoint (important for gmx/web.de mobile) -->
     <mj-breakpoint width="480px" />
