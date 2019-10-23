@@ -39,14 +39,14 @@
           display: none !important;
         }
       }
-    </mj-style>
-    <mj-style inline="inline">
+      
       a {
         color: #333333;
         text-decoration: none;
         border: none;
       }
-
+    </mj-style>
+    <mj-style inline="inline">
       .link-nostyle {
         color: #333333;
         text-decoration: none;
