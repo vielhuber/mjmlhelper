@@ -19,7 +19,8 @@
     </mj-style>    
 
     <mj-attributes>
-      <mj-all padding="0" font-family="Roboto, Custom, sans-serif" color="#333333" align="center" vertical-align="top" />
+      <!-- be careful: always provide a good fallback font for outlook, e.g. arial -->
+      <mj-all padding="0" font-family="Roboto, Custom, Arial, sans-serif" color="#333333" align="center" vertical-align="top" />
       <mj-body width="600px" background-color="#eee" />
       <mj-wrapper padding="0px" background-color="transparent" />
       <mj-section padding="20px" background-color="#ffffff" />
@@ -40,6 +41,12 @@
       }
     </mj-style>
     <mj-style inline="inline">
+      a {
+        color: #333333;
+        text-decoration: none;
+        border: none;
+      }
+
       .link-nostyle {
         color: #333333;
         text-decoration: none;
