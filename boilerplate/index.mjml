@@ -1,8 +1,8 @@
 <mjml owa="desktop">
   <mj-head>
 
-    <mj-title>{CAMPAIGN}</mj-title>
-    <mj-preview>{CAMPAIGN}</mj-preview>
+    <mj-title>%PREVIEWTEXT%</mj-title>
+    <mj-preview>%PREVIEWTEXT%</mj-preview>
 
     <!-- set manual breakpoint (important for gmx/web.de mobile) -->
     <mj-breakpoint width="480px" />
@@ -16,7 +16,7 @@
         font-weight: 400;
         src: url('_assets/font.woff2') format('woff2');
       }
-    </mj-style>    
+    </mj-style>
 
     <mj-attributes>
       <!-- be careful: always provide a good fallback font for outlook, e.g. arial -->
@@ -39,7 +39,7 @@
           display: none !important;
         }
       }
-      
+
       a {
         color: #333333;
         text-decoration: none;
@@ -67,27 +67,29 @@
     </mj-wrapper>
 
     <mj-wrapper css-class="box-shadow">
-      <!--#loop#--><!--#loopitem#-->
+      <!-- flexibles -->
+      <!-- flexible="Simple" -->
       <mj-include path="_inc/simple.mjml" />
-      <!--#/loopitem#--><!--#loopitem#-->
+      <!-- flexible="Button" -->
       <mj-include path="_inc/button.mjml" />
-      <!--#/loopitem#--><!--#loopitem#-->
+      <!-- flexible="Divider" -->
       <mj-include path="_inc/divider.mjml" />
-      <!--#/loopitem#--><!--#loopitem#-->
+      <!-- flexible="Columns" -->
       <mj-include path="_inc/columns.mjml" />
-      <!--#/loopitem#--><!--#loopitem#-->
+      <!-- flexible="Two Col Left" -->
       <mj-include path="_inc/two-col-left.mjml" />
-      <!--#/loopitem#--><!--#loopitem#-->
+      <!-- flexible="Two Col Right" -->
       <mj-include path="_inc/two-col-right.mjml" />
-      <!--#/loopitem#--><!--#loopitem#-->
+      <!-- flexible="Two Col Left" -->
       <mj-include path="_inc/two-col-left.mjml" />
-      <!--#/loopitem#--><!--#loopitem#-->
+      <!-- flexible="Two Col Right" -->
       <mj-include path="_inc/two-col-right.mjml" />
-      <!--#/loopitem#--><!--#loopitem#-->
+      <!-- flexible="Simple" -->
       <mj-include path="_inc/simple.mjml" />
-      <!--#/loopitem#--><!--#loopitem#-->
+      <!-- flexible="Columns Inline" -->
       <mj-include path="_inc/columns-inline.mjml" />
-      <!--#/loopitem#--><!--#/loop#-->
+      <!-- /flexibles -->
+      <mj-include path="_inc/simple.mjml" />
     </mj-wrapper>
 
     <mj-wrapper>

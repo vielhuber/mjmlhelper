@@ -3,12 +3,22 @@ class mjmlhelper {
         return require(process.cwd() + '/mjmlhelper.json');
     }
 
-    static cleverreach() {
+    static runMjml() {
+        const { execSync } = require('child_process'),
+            fs = require('fs');
+        let path = '.';
+        if (!fs.existsSync('./node_modules')) {
+            path = '..';
+        }
+        execSync('node ' + path + '/node_modules/mjml/bin/mjml index.mjml -o index.html');
+    }
+
+    static generateZip(type) {
         fs.copySync(process.cwd() + '/index.html', process.cwd() + '/index-original.html', {
             overwrite: true
         });
         let data = fs.readFileSync(process.cwd() + '/index.html', 'utf-8');
-        data = this.modifyHtml(data);
+        data = this.modifyHtml(data, type);
         fs.writeFileSync(process.cwd() + '/index.html', data, 'utf-8');
         fs.copySync(process.cwd() + '/index.html', process.cwd() + '/index-converted.html', {
             overwrite: true
@@ -31,18 +41,24 @@ class mjmlhelper {
         archive.finalize();
     }
 
-    static modifyHtml(data) {
-        data = this.addCleverReachStyles(data);
+    static modifyHtml(data, type) {
+        if (type === 'cleverreach') {
+            data = this.addCleverReachStyles(data);
+        }
+        if (type === 'mailchimp') {
+            data = this.addMailchimpStyles(data);
+        }
         data = this.doSomeHacks(data);
         data = this.replaceDummyLinks(data, false);
         data = this.moveImagesFolder(data);
-        data = this.attachHtmlTags(data);
         return data;
     }
 
     static addCleverReachStyles(data) {
         let style_tag = '<style type="text/css">',
-            pos = data.indexOf(style_tag) + style_tag.length;
+            pos = data.indexOf(style_tag) + style_tag.length,
+            positions = null,
+            shift = 0;
         // set max width to container so that in cleverreach editor modules are good visible
         data =
             data.substring(0, pos) +
@@ -60,63 +76,35 @@ class mjmlhelper {
             data.substring(pos);
         // cleverreach merges all styles together
         // now outlook-group-fix fails on gmail: remove that rule
-        data = data.replace('.outlook-group-fix {', '.disabled-outlook-group-fix {');
+        data = data.replace('.mj-outlook-group-fix {', '.disabled-mj-outlook-group-fix {');
         // now @ms-viewport and @viewport fails on gmail: remove that rule
         data = data.replace('@-ms-viewport {', '.disabled-ms-viewport {');
         data = data.replace('@viewport {', '.disabled-viewport {');
-        // fix loop comments (spaces are inserted by mjml)
-        data = data.split('<!-- #loop# -->').join('<!--#loop#-->');
-        data = data.split('<!-- #loopitem# -->').join('<!--#loopitem#-->');
-        data = data.split('<!-- #/loopitem# -->').join('<!--#/loopitem#-->');
-        data = data.split('<!-- #/loop# -->').join('<!--#/loop#-->');
-        return data;
-    }
 
-    static doSomeHacks(data) {
+        // placeholders
+        data = this.replaceAll(data, '%UNSUBSCRIBE%', '{UNSUBSCRIBE}');
+        data = this.replaceAll(data, '%WEBVERSION%', '{ONLINE_VERSION}');
+        data = this.replaceAll(data, '%PREVIEWTEXT%', '{CAMPAIGN}');
 
-        // gmx/web.de desktop: enable multi column layout
-        for (var i = 0; i <= 100; i++) {
-            data = data
-                .split('.mj-column-per-' + i + ' { width:' + i + '% !important; }')
-                .join(
-                    '.mj-column-per-' + i + ' { width:' + i + '% !important;max-width:' + i + '%; }'
-                );
-        }
+        // loop items
+        data = this.replaceFirst(data, '<!-- flexibles -->', '<!--#loop#--><!--#loopitem#-->');
+        data = this.replaceLast(data, '<!-- /flexibles -->', '<!--#/loopitem#--><!--#/loop#-->');
+        positions = this.findAllPositions('<!-- flexible', data);
+        shift = 0;
+        positions.forEach((positions__value, positions__key) => {
+            if (positions__key === 0) {
+                return;
+            }
+            let begin = positions__value + shift,
+                end = data.indexOf('-->', begin) + '-->'.length,
+                tag = '<!--#/loopitem#--><!--#loopitem#-->';
+            data = data.substring(0, begin) + tag + data.substring(end);
+            shift += tag.length - (end - begin);
+        });
 
-        // yahoo.com has a weird bug: when using google fonts, @import gets stripped out and the follow rule is killed; circumvent that
-        if( data.indexOf('@import url(') > -1 )
-        {
-            let pos = data.indexOf(');', data.indexOf('@import url('));
-            data = data.substring(0, pos+2) + ' .dummyclass{} ' + data.substring(pos+2);
-        }
-
-        // prevent times new roman on outlook <2016
-        let pos = data.indexOf('font-family:')
-        if( pos > -1 )
-        {
-            let font_family = data.substring( pos+('font-family:').length, data.indexOf(';', pos) ).trim();
-            // we have to do this exactly like this, because cleverreach merges together all styles and ignores mso
-            data = data.replace('<style type="text/css">', '<style type="text/css">.outlook, .outlook table, .outlook td, .outlook h1, .outlook h2, .outlook h3, .outlook h4, .outlook h5, .outlook h6, .outlook p, .outlook span, .outlook strong, .outlook div, .outlook a { font-family: '+font_family+', Arial, Helvetica, sans-serif !important; }</style>\n<style type="text/css">');
-            let pos2 = data.indexOf('>', data.indexOf('<body'))+'>'.length;
-            data = data.substring(0, pos2) + '<!--[if mso]><div class="outlook"><![endif]-->' + data.substring(pos2);
-            data = data.replace('</body>','<!--[if mso]></div><![endif]--></body>');
-        }
-
-        return data;
-    }
-
-    static replaceDummyLinks(data, with_codes = true) {
-        data = data.split('href="#"').join('href="https://test.de"');
-        if( with_codes === true )
-        {
-            data = data.split('href="{ONLINE_VERSION}"').join('href="https://test.de"').split('href="{UNSUBSCRIBE}"').join('href="https://test.de"');
-        }
-        return data;
-    }
-
-    static attachHtmlTags(data) {
-        let positions = this.findAllPositions(' outlook-group-fix', data),
-            shift = 0;
+        // first and last tag
+        positions = this.findAllPositions(' mj-outlook-group-fix', data);
+        shift = 0;
         positions.forEach(positions__value => {
             let begin = data.indexOf('>', positions__value + shift) + '>'.length,
                 pointer = begin,
@@ -136,6 +124,103 @@ class mjmlhelper {
             data = data.substring(0, end) + '<!--#/html#-->' + data.substring(end);
             shift += '<!--#html #-->'.length + '<!--#/html#-->'.length;
         });
+
+        return data;
+    }
+
+    static addMailchimpStyles(data) {
+        let positions, shift;
+
+        // placeholders
+        data = this.replaceAll(data, '%UNSUBSCRIBE%', '*|UNSUB|*');
+        data = this.replaceAll(data, '%WEBVERSION%', '*|ARCHIVE|*');
+        data = this.replaceAll(data, '%PREVIEWTEXT%', '*|MC_PREVIEW_TEXT|*');
+
+        // mc:edit
+        positions = this.findAllPositions(' mj-outlook-group-fix', data);
+        shift = 0;
+        positions.forEach(positions__value => {
+            let pos = data.indexOf('"', positions__value + shift) + '"'.length,
+                tag = ' mc:edit="_' + positions__value + '"';
+            data = data.substring(0, pos) + tag + data.substring(pos);
+            shift += tag.length;
+        });
+
+        // mc:repeatable
+        data = this.replaceFirst(data, '<!-- flexibles -->', '');
+        data = this.replaceLast(data, '<!-- /flexibles -->', '</div>');
+        positions = this.findAllPositions('<!-- flexible', data);
+        shift = 0;
+        positions.forEach((positions__value, positions__key) => {
+            let begin = positions__value + shift,
+                end = data.indexOf('-->', begin) + '-->'.length,
+                begin_name = data.indexOf('"', positions__value + shift) + '"'.length,
+                begin_end = data.indexOf('"', begin_name),
+                tag =
+                    '<div mc:repeatable="content" mc:variant="' +
+                    data.substring(begin_name, begin_end) +
+                    '">';
+            if (positions__key > 0) {
+                tag = '</div>' + tag;
+            }
+            data = data.substring(0, begin) + tag + data.substring(end);
+            shift += tag.length - (end - begin);
+        });
+
+        return data;
+    }
+
+    static doSomeHacks(data) {
+        // gmx/web.de desktop: enable multi column layout
+        for (var i = 0; i <= 100; i++) {
+            data = data
+                .split('.mj-column-per-' + i + ' { width:' + i + '% !important; }')
+                .join(
+                    '.mj-column-per-' + i + ' { width:' + i + '% !important;max-width:' + i + '%; }'
+                );
+        }
+
+        // yahoo.com has a weird bug: when using google fonts, @import gets stripped out and the follow rule is killed; circumvent that
+        if (data.indexOf('@import url(') > -1) {
+            let pos = data.indexOf(');', data.indexOf('@import url('));
+            data = data.substring(0, pos + 2) + ' .dummyclass{} ' + data.substring(pos + 2);
+        }
+
+        // prevent times new roman on outlook <2016
+        let pos = data.indexOf('font-family:');
+        if (pos > -1) {
+            let font_family = data
+                .substring(pos + 'font-family:'.length, data.indexOf(';', pos))
+                .trim();
+            // we have to do this exactly like this, because cleverreach merges together all styles and ignores mso
+            data = data.replace(
+                '<style type="text/css">',
+                '<style type="text/css">.outlook, .outlook table, .outlook td, .outlook h1, .outlook h2, .outlook h3, .outlook h4, .outlook h5, .outlook h6, .outlook p, .outlook span, .outlook strong, .outlook div, .outlook a { font-family: ' +
+                    font_family +
+                    ', Arial, Helvetica, sans-serif !important; }</style>\n<style type="text/css">'
+            );
+            let pos2 = data.indexOf('>', data.indexOf('<body')) + '>'.length;
+            data =
+                data.substring(0, pos2) +
+                '<!--[if mso]><div class="outlook"><![endif]-->' +
+                data.substring(pos2);
+            data = data.replace('</body>', '<!--[if mso]></div><![endif]--></body>');
+        }
+
+        return data;
+    }
+
+    static replaceDummyLinks(data, with_codes = true) {
+        data = data.split('href="#"').join('href="https://test.de"');
+        if (with_codes === true) {
+            data = data
+                .split('href="%UNSUBSCRIBE%"')
+                .join('href="https://test.de"')
+                .split('href="%WEBVERSION%"')
+                .join('href="https://test.de"')
+                .split('href="%PREVIEWTEXT%"')
+                .join('href="https://test.de"');
+        }
         return data;
     }
 
@@ -187,11 +272,8 @@ class mjmlhelper {
             message.html = this.uploadImages(message.html);
         }
 
-        // call functions from cleverreach converter (only relevant ones)
-        message.html = this.addCleverReachStyles(message.html);
+        // call functions from converter (only relevant ones)
         message.html = this.doSomeHacks(message.html);
-
-        // add specific mail modifications
         message.html = this.replaceDummyLinks(message.html, true);
 
         fs.writeFileSync(process.cwd() + '/index-converted.html', message.html, 'utf-8');
@@ -344,6 +426,20 @@ class mjmlhelper {
             end = data.indexOf('</title>');
         return data.substring(begin, end);
     }
+
+    static replaceAll(string, search, replace) {
+        return string.split(search).join(replace);
+    }
+
+    static replaceLast(string, search, replace) {
+        let n = string.lastIndexOf(search);
+        string = string.slice(0, n) + string.slice(n).replace(search, replace);
+        return string;
+    }
+
+    static replaceFirst(string, search, replace) {
+        return string.replace(search, replace);
+    }
 }
 
 const fs = require('fs-extra'),
@@ -351,10 +447,12 @@ const fs = require('fs-extra'),
     nodemailer = require('nodemailer'),
     Client = require('ftp');
 
-if (process.argv.slice(2)[0] == 'cleverreach') {
-    mjmlhelper.cleverreach();
+if (process.argv.slice(2)[0] === 'cleverreach' || process.argv.slice(2)[0] === 'mailchimp') {
+    mjmlhelper.runMjml();
+    mjmlhelper.generateZip(process.argv.slice(2)[0]);
     console.log('successfully created index.zip');
-} else if (process.argv.slice(2)[0] == 'mail') {
+} else if (process.argv.slice(2)[0] === 'mail') {
+    mjmlhelper.runMjml();
     mjmlhelper.mail();
 } else {
     console.log('missing options. possible options: cleverreach, mail');

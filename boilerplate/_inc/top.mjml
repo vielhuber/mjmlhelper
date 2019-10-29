@@ -1,9 +1,7 @@
 <mj-section background-color="transparent">
   <mj-column>
     <mj-text mj-class="small strong">
-      <!--#online_version #-->
-      Wird der Newsletter nicht richtig angezeigt? Dann bitte <a class="link-nostyle" href="{ONLINE_VERSION}" target="_blank">hier klicken</a>.
-      <!--#/online_version#-->
+      Wird der Newsletter nicht richtig angezeigt? Dann bitte <a class="link-nostyle" href="%WEBVERSION%" target="_blank">hier klicken</a>.
     </mj-text>
   </mj-column>
 </mj-section>

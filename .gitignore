@@ -3,6 +3,8 @@
 !package.json
 !/boilerplate/
 !/boilerplate/*
+/boilerplate/index-converted.html
+/boilerplate/index.zip
 !/boilerplate/*/
 !/boilerplate/*/*
 !mjmlhelper.js
