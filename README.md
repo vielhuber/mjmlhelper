@@ -16,7 +16,7 @@ npm install mjmlhelper
 
 ## setup
 
-copy out a small mjml boilerplate:
+copy out all boilerplate files:
 
 ```
 cp -r ./node_modules/mjmlhelper/boilerplate/* .

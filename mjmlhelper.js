@@ -507,6 +507,8 @@ if (process.argv.slice(2)[0] === 'cleverreach' || process.argv.slice(2)[0] === '
 } else if (process.argv.slice(2)[0] === 'mail') {
     mjmlhelper.runMjml();
     mjmlhelper.mail();
+} else if (process.argv.slice(2)[0] === 'build') {
+    mjmlhelper.runMjml();
 } else {
-    console.log('missing options. possible options: cleverreach, mail');
+    console.log('missing options');
 }

@@ -1,15 +1,19 @@
 {
-  "name": "project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Test!\""
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "mjmlhelper": "*"
-  }
+    "name": "project",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "watch": "onchange ./*.mjml ./**/*.mjml --initial --wait --delay 1000 --await-write-finish -- onerror \"npm run build\" --title \"watch\" --message \"build failed\" --sound mute",
+        "build": "node ./node_modules/mjmlhelper/mjmlhelper.js build",
+        "mail": "node ./node_modules/mjmlhelper/mjmlhelper.js mail",
+        "cleverreach": "node ./node_modules/mjmlhelper/mjmlhelper.js cleverreach",
+        "mailchimp": "node ./node_modules/mjmlhelper/mjmlhelper.js mailchimp"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "mjmlhelper": "*"
+    }
 }
