@@ -3,7 +3,7 @@ class mjmlhelper {
         return require(process.cwd() + '/mjmlhelper.json');
     }
 
-    static runMjml() {
+    static runMjml(type) {
         const { execSync } = require('child_process'),
             fs = require('fs');
         let path = '.';
@@ -13,13 +13,27 @@ class mjmlhelper {
         execSync('node ' + path + '/node_modules/mjml/bin/mjml index.mjml -o index.html');
     }
 
+    static runMjmlAfterwork(type) {
+        let data = fs.readFileSync(process.cwd() + '/index.html', 'utf-8');
+        data = this.modifyHtml(data, type);
+        fs.writeFileSync(process.cwd() + '/index.html', data, 'utf-8');
+    }
+
     static generateZip(type) {
         fs.copySync(process.cwd() + '/index.html', process.cwd() + '/index-original.html', {
             overwrite: true
         });
+
         let data = fs.readFileSync(process.cwd() + '/index.html', 'utf-8');
-        data = this.modifyHtml(data, type);
+        if (type === 'cleverreach') {
+            data = this.addCleverReachStyles(data);
+        }
+        if (type === 'mailchimp') {
+            data = this.addMailchimpStyles(data);
+        }
+        data = this.moveImagesFolder(data);
         fs.writeFileSync(process.cwd() + '/index.html', data, 'utf-8');
+
         fs.copySync(process.cwd() + '/index.html', process.cwd() + '/index-converted.html', {
             overwrite: true
         });
@@ -29,6 +43,8 @@ class mjmlhelper {
             });
             fs.removeSync(process.cwd() + '/index-original.html');
         });
+
+        console.log('successfully created index.zip');
     }
 
     static zipFolder(callback) {
@@ -41,20 +57,11 @@ class mjmlhelper {
         archive.finalize();
     }
 
-    static modifyHtml(data, type = null) {
-        if (type === 'cleverreach') {
-            data = this.addCleverReachStyles(data);
-        }
-        if (type === 'mailchimp') {
-            data = this.addMailchimpStyles(data);
-        }
+    static modifyHtml(data, type) {
         data = this.doSomeHacks(data);
-        data = this.replaceDummyLinks(data, type === null ? true : false);
+        data = this.replaceDummyLinks(data, type === 'mail' ? true : false);
         data = this.mergeStyleTagsIntoOne(data);
         data = this.addHelperClasses(data);
-        if (type !== null) {
-            data = this.moveImagesFolder(data);
-        }
         return data;
     }
 
@@ -297,7 +304,7 @@ class mjmlhelper {
         return indices;
     }
 
-    static mail() {
+    static mail(type) {
         let transporter = nodemailer.createTransport({
                 host: this.config().smtp,
                 port: this.config().port,
@@ -325,9 +332,6 @@ class mjmlhelper {
             // this is asynchrionus but we simply do process further
             message.html = this.uploadImages(message.html);
         }
-
-        // call functions from converter (only relevant ones)
-        message.html = this.modifyHtml(message.html, null);
 
         fs.writeFileSync(process.cwd() + '/index-converted.html', message.html, 'utf-8');
 
@@ -498,17 +502,20 @@ class mjmlhelper {
 const fs = require('fs-extra'),
     archiver = require('archiver'),
     nodemailer = require('nodemailer'),
-    Client = require('ftp');
+    Client = require('ftp'),
+    type = process.argv.slice(2)[0];
 
-if (process.argv.slice(2)[0] === 'cleverreach' || process.argv.slice(2)[0] === 'mailchimp') {
-    mjmlhelper.runMjml();
-    mjmlhelper.generateZip(process.argv.slice(2)[0]);
-    console.log('successfully created index.zip');
-} else if (process.argv.slice(2)[0] === 'mail') {
-    mjmlhelper.runMjml();
-    mjmlhelper.mail();
-} else if (process.argv.slice(2)[0] === 'build') {
-    mjmlhelper.runMjml();
+if (type === 'cleverreach' || type === 'mailchimp') {
+    mjmlhelper.runMjml(type);
+    mjmlhelper.runMjmlAfterwork(type);
+    mjmlhelper.generateZip(type);
+} else if (type === 'mail') {
+    mjmlhelper.runMjml(type);
+    mjmlhelper.runMjmlAfterwork(type);
+    mjmlhelper.mail(type);
+} else if (type === 'build') {
+    mjmlhelper.runMjml(type);
+    mjmlhelper.runMjmlAfterwork(type);
 } else {
     console.log('missing options');
 }
