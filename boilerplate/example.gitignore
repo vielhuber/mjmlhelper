@@ -1,6 +1,5 @@
 *
 !.gitignore
-!.npmignore
 !index.mjml
 !package.json
 !/_assets/

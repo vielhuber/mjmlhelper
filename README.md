@@ -22,6 +22,12 @@ copy out all boilerplate files:
 cp -r ./node_modules/mjmlhelper/boilerplate/* .
 ```
 
+run the initial setup:
+
+```
+npm run setup
+```
+
 then edit your smtp credentials in `mjmlhelper.json` for sending out emails:
 
 ```json
