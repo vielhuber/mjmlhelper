@@ -56,28 +56,34 @@ then edit your smtp credentials in `mjmlhelper.json` for sending out emails:
 
 ## usage
 
-do your daily mjml stuff
+build mjml (and watch)
 
 ```
-node ./node_modules/mjml/bin/mjml -w index.mjml -o index.html
+npm run watch
+```
+
+build mjml
+
+```
+npm run build
 ```
 
 send out mail
 
 ```
-node ./node_modules/mjmlhelper/mjmlhelper.js mail
+npm run mail
 ```
 
 create a ready-to-import zip file for CleverReach
 
 ```
-node ./node_modules/mjmlhelper/mjmlhelper.js cleverreach
+npm run cleverreach
 ```
 
 create a ready-to-import zip file for Mailchimp
 
 ```
-node ./node_modules/mjmlhelper/mjmlhelper.js mailchimp
+npm run mailchimp
 ```
 
 ## placeholders

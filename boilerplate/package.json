@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "watch": "onchange ./*.mjml ./**/*.mjml --initial --wait --delay 1000 --await-write-finish -- onerror \"npm run build\" --title \"watch\" --message \"build failed\" --sound mute",
+        "watch": "onchange ./*.mjml ./**/*.mjml --initial --wait --delay 100 --await-write-finish 200 -- onerror \"npm run build\" --title \"watch\" --message \"build failed\" --sound mute",
         "build": "node ./node_modules/mjmlhelper/mjmlhelper.js build",
         "mail": "node ./node_modules/mjmlhelper/mjmlhelper.js mail",
         "cleverreach": "node ./node_modules/mjmlhelper/mjmlhelper.js cleverreach",
