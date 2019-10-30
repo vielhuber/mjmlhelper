@@ -20,11 +20,9 @@ copy out a small mjml boilerplate:
 
 ```
 cp -r ./node_modules/mjmlhelper/boilerplate/* .
-mv example.mjmlhelper.json mjmlhelper.json
-mv example.gitignore .gitignore
 ```
 
-then edit your smtp credentials in mjmlhelper.json for sending out emails:
+then edit your smtp credentials in `mjmlhelper.json` for sending out emails:
 
 ```json
 {
