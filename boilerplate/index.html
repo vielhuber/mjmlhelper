@@ -138,22 +138,22 @@
       @media only screen and (max-width:500px) {
 
         /* option 1: all percentage columns */
-        *[class*="mj-column-per-"] table,
-        *[class*="mj-column-per-"] td,
-        *[class*="mj-column-per-"] td img {
+        .mj-column-per-X table,
+        .mj-column-per-X td,
+        .mj-column-per-X td img {
           min-width: 100%;
         }
 
         /* option 2: all columns except some manual */
-        *[class*="mj-column-"] table,
-        *[class*="mj-column-"] td,
-        *[class*="mj-column-"] td img {
+        .mj-column-X table,
+        .mj-column-X td,
+        .mj-column-X td img {
           min-width: 100%;
         }
 
-        *[class*="mj-column-"].no-mobile-full-width table,
-        *[class*="mj-column-"].no-mobile-full-width td,
-        *[class*="mj-column-"].no-mobile-full-width td img {
+        .mj-column-X.no-mobile-full-width table,
+        .mj-column-X.no-mobile-full-width td,
+        .mj-column-X.no-mobile-full-width td img {
           min-width: 0;
         }
 
@@ -168,21 +168,17 @@
     <style type="text/css">
       /* iphone: modify font sizes */
       @media only screen and (max-width:500px) {
-
-        *[style*="font-size:16"],
-        *[style*="font-size: 16"] {
+        .font-size-16px {
           font-size: 20px !important;
           line-height: 24px !important;
         }
 
-        *[style*="font-size:13"],
-        *[style*="font-size: 13"] {
+        .font-size-13px {
           font-size: 17px !important;
           line-height: 22px !important;
         }
 
-        *[style*="font-size:10"],
-        *[style*="font-size: 10"] {
+        .font-size-10px {
           font-size: 15px !important;
           line-height: 20px !important;
         }
@@ -191,7 +187,7 @@
     <style type="text/css">
       /* iphone: text align center */
       @media only screen and (max-width:500px) {
-        *[style*="text-align:left"] {
+        .text-align-left {
           text-align: center !important;
         }
       }

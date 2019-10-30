@@ -41,7 +41,7 @@ class mjmlhelper {
         archive.finalize();
     }
 
-    static modifyHtml(data, type) {
+    static modifyHtml(data, type = null) {
         if (type === 'cleverreach') {
             data = this.addCleverReachStyles(data);
         }
@@ -49,8 +49,12 @@ class mjmlhelper {
             data = this.addMailchimpStyles(data);
         }
         data = this.doSomeHacks(data);
-        data = this.replaceDummyLinks(data, false);
-        data = this.moveImagesFolder(data);
+        data = this.replaceDummyLinks(data, type === null ? true : false);
+        data = this.mergeStyleTagsIntoOne(data);
+        data = this.addHelperClasses(data);
+        if (type !== null) {
+            data = this.moveImagesFolder(data);
+        }
         return data;
     }
 
@@ -74,12 +78,15 @@ class mjmlhelper {
             data.substring(0, pos) +
             ' body.cred_modal:before { display: none !important; } ' +
             data.substring(pos);
+
+        /*
         // cleverreach merges all styles together
-        // now outlook-group-fix fails on gmail: remove that rule
+        // outlook-group-fix fails on gmail: remove that rule
         data = data.replace('.mj-outlook-group-fix {', '.disabled-mj-outlook-group-fix {');
-        // now @ms-viewport and @viewport fails on gmail: remove that rule
+        // @ms-viewport and @viewport fails on gmail: remove that rule
         data = data.replace('@-ms-viewport {', '.disabled-ms-viewport {');
         data = data.replace('@viewport {', '.disabled-viewport {');
+        */
 
         // placeholders
         data = this.replaceAll(data, '%UNSUBSCRIBE%', '{UNSUBSCRIBE}');
@@ -155,10 +162,10 @@ class mjmlhelper {
             let begin = positions__value + shift,
                 end = data.indexOf('-->', begin) + '-->'.length,
                 begin_name = data.indexOf('"', positions__value + shift) + '"'.length,
-                begin_end = data.indexOf('"', begin_name),
+                end_name = data.indexOf('"', begin_name),
                 tag =
                     '<div mc:repeatable="content" mc:variant="' +
-                    data.substring(begin_name, begin_end) +
+                    data.substring(begin_name, end_name) +
                     '">';
             if (positions__key > 0) {
                 tag = '</div>' + tag;
@@ -167,6 +174,53 @@ class mjmlhelper {
             shift += tag.length - (end - begin);
         });
 
+        return data;
+    }
+
+    static addHelperClasses(data) {
+        // these classes are important, because gmail does not support any data attributes to target iphone responsive styles
+        const jsdom = require('jsdom'),
+            { JSDOM } = jsdom;
+        let dom = new JSDOM(data);
+        dom.window.document.querySelectorAll('[style*="font-size"]').forEach(el => {
+            el.classList.add('font-size-' + el.style.fontSize);
+        });
+        dom.window.document.querySelectorAll('[style*="text-align"]').forEach(el => {
+            el.classList.add('text-align-' + el.style.textAlign);
+        });
+        dom.window.document.querySelectorAll('[class*="mj-column-per-"]').forEach(el => {
+            el.classList.add('mj-column-per-X');
+        });
+        dom.window.document.querySelectorAll('[class*="mj-column-"]').forEach(el => {
+            el.classList.add('mj-column-X');
+        });
+        return dom.serialize();
+    }
+
+    static mergeStyleTagsIntoOne(data) {
+        let css = '',
+            positions = this.findAllPositions('<style type="text/css">', data),
+            shift = 0;
+        positions.forEach(positions__value => {
+            let begin = positions__value + shift,
+                end = data.indexOf('</style>', begin) + '</style>'.length,
+                begin_inner = data.indexOf('>', begin) + '>'.length,
+                end_inner = data.indexOf('</style>', begin);
+            // if this is inside ie condition, skip
+            let pointer = begin;
+            while (data.substring(pointer - 1, pointer) == ' ') {
+                pointer--;
+            }
+            if (data.substring(pointer - 3, pointer - 1) == ']>') {
+                return;
+            }
+            css += data.substring(begin_inner, end_inner);
+            data = data.substring(0, begin) + data.substring(end);
+            shift = shift - (end - begin);
+        });
+        // minify
+        css = css.replace(/\r?\n?/g, '').trim();
+        data = data.replace('</head>', '<style type="text/css">' + css + '</style></head>');
         return data;
     }
 
@@ -273,8 +327,7 @@ class mjmlhelper {
         }
 
         // call functions from converter (only relevant ones)
-        message.html = this.doSomeHacks(message.html);
-        message.html = this.replaceDummyLinks(message.html, true);
+        message.html = this.modifyHtml(message.html, null);
 
         fs.writeFileSync(process.cwd() + '/index-converted.html', message.html, 'utf-8');
 

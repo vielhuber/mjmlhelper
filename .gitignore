@@ -5,6 +5,8 @@
 !/boilerplate/*
 /boilerplate/index-converted.html
 /boilerplate/index.zip
+/boilerplate/mjmlhelper.json
+/boilerplate/log.txt
 !/boilerplate/*/
 !/boilerplate/*/*
 !mjmlhelper.js
