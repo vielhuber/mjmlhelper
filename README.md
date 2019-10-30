@@ -11,7 +11,6 @@ it also includes a small boilerplate and some nifty updates for mjml.
 ## installation
 
 ```
-npm init -y
 npm install mjmlhelper
 ```
 
@@ -21,8 +20,8 @@ copy out a small mjml boilerplate:
 
 ```
 cp -r ./node_modules/mjmlhelper/boilerplate/* .
-cp example.mjmlhelper.json mjmlhelper.json
-cp example.gitignore .gitignore
+mv example.mjmlhelper.json mjmlhelper.json
+mv example.gitignore .gitignore
 ```
 
 then edit your smtp credentials in mjmlhelper.json for sending out emails:
