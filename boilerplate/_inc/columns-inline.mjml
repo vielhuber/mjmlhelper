@@ -9,12 +9,12 @@
 
     <!-- use this instead of mj-group; also include line-height:0px to prevent outlook from cutting off images -->
     <mj-text padding="40px 0" line-height="0px">
-      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/test.jpg" width="32" /></a>&nbsp;
-      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/test.jpg" width="32" /></a>&nbsp;
-      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/test.jpg" width="32" /></a>&nbsp;
-      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/test.jpg" width="32" /></a>&nbsp;
-      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/test.jpg" width="32" /></a>&nbsp;
-      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/test.jpg" width="32" /></a>
+      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/32x32.jpg" width="32" /></a>&nbsp;
+      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/32x32.jpg" width="32" /></a>&nbsp;
+      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/32x32.jpg" width="32" /></a>&nbsp;
+      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/32x32.jpg" width="32" /></a>&nbsp;
+      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/32x32.jpg" width="32" /></a>&nbsp;
+      <a href="https://www.facebook.com" target="_blank"><img style="padding-bottom:4px;vertical-align:middle" src="_assets/32x32.jpg" width="32" /></a>
     </mj-text>
 
     <mj-text>

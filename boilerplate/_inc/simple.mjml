@@ -9,7 +9,7 @@
       this is hidden on most mobile devices
     </mj-text>
 
-    <mj-image src="_assets/test.jpg" />
+    <mj-image src="_assets/560x330.jpg" />
 
     <mj-text>
       Dies ist ein echter <a class="link-nostyle" href="https://test.de" target="_blank">Link</a>.

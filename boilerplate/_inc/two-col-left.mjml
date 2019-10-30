@@ -1,6 +1,6 @@
 <mj-section direction="ltr">
   <mj-column width="50%" padding="0% 2%" css-class="mobile-full-width">
-    <mj-image src="_assets/test.jpg" />
+    <mj-image src="_assets/276x165.jpg" />
   </mj-column>
 
   <mj-column width="50%" padding="0% 2%" css-class="no-mobile-full-width">
