@@ -86,15 +86,6 @@ class mjmlhelper {
             ' body.cred_modal:before { display: none !important; } ' +
             data.substring(pos);
 
-        /*
-        // cleverreach merges all styles together
-        // outlook-group-fix fails on gmail: remove that rule
-        data = data.replace('.mj-outlook-group-fix {', '.disabled-mj-outlook-group-fix {');
-        // @ms-viewport and @viewport fails on gmail: remove that rule
-        data = data.replace('@-ms-viewport {', '.disabled-ms-viewport {');
-        data = data.replace('@viewport {', '.disabled-viewport {');
-        */
-
         // placeholders
         data = this.replaceAll(data, '%UNSUBSCRIBE%', '{UNSUBSCRIBE}');
         data = this.replaceAll(data, '%WEBVERSION%', '{ONLINE_VERSION}');
@@ -227,7 +218,7 @@ class mjmlhelper {
         });
         // minify
         css = css.replace(/\r?\n?/g, '').trim();
-        data = data.replace('</head>', '<style type="text/css">' + css + '</style></head>');
+        data = data.replace('<head>', '<head><style type="text/css">' + css + '</style>');
         return data;
     }
 
