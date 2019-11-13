@@ -134,7 +134,23 @@ class mjmlhelper {
     }
 
     static addMailchimpStyles(data) {
-        let positions, shift;
+        let positions,
+            shift,
+            style_tag = '<style type="text/css">',
+            pos = data.indexOf(style_tag) + style_tag.length;
+
+        // increase ordering icon
+        // also there is a bug in mailchimp: when adding a new module and changing it's type, the ID is lost and the element cannot be moved; we fix this also here (we simply hide the move icon when the ID is missing)
+        data =
+            data.substring(0, pos) +
+            ' .tpl-repeatmovewrap>.tpl-repeatmove { background-color: #fff !important; top: -10px !important; left: -20px !important; width: 100px !important; height: 50px !important; border:2px solid grey !important; background-position:center !important; display:none !important; } div[mcrepeatable][id] .tpl-repeatmovewrap>.tpl-repeatmove { display: block !important; } ' +
+            data.substring(pos);
+
+        // remove hide icon
+        data =
+            data.substring(0, pos) +
+            ' .tpl-repeatwrap.can-hide .tpl-hidetoggle { display:none !important; } ' +
+            data.substring(pos);
 
         // placeholders
         data = this.replaceAll(data, '%UNSUBSCRIBE%', '*|UNSUB|*');
