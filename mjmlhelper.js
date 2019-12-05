@@ -142,7 +142,7 @@ class mjmlhelper {
         // when replacing images in mailchimp, style="width:" is set to a fixed size. we prevent this with
         data =
             data.substring(0, pos) +
-            ' img { max-width:100%; } ' +
+            ' img { max-width:100%; height:auto !important; } ' +
             data.substring(pos);
 
         // increase ordering icon
