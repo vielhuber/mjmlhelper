@@ -139,6 +139,12 @@ class mjmlhelper {
             style_tag = '<style type="text/css">',
             pos = data.indexOf(style_tag) + style_tag.length;
 
+        // when replacing images in mailchimp, style="width:" is set to a fixed size. we prevent this with
+        data =
+            data.substring(0, pos) +
+            ' img { max-width:100%; } ' +
+            data.substring(pos);
+
         // increase ordering icon
         // also there is a bug in mailchimp: when adding a new module and changing it's type, the ID is lost and the element cannot be moved; we fix this also here (we simply hide the move icon when the ID is missing)
         data =
