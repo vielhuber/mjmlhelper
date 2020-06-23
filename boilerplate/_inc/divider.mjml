@@ -1,5 +1,8 @@
 <mj-section>
     <mj-column>
+        <!-- simple spacer -->
+        <mj-spacer height="40px" />
+
         <!-- a divider only can be aligned center -->
         <!-- it should also not have a fixed width (because of iphone bug) -->
         <!-- if it should have a fixed width, use mj-button instead (see below) -->
