@@ -8,6 +8,24 @@
             this is hidden on most mobile devices
         </mj-text>
 
+        <mj-text
+            color="red"
+            font-size="20px"
+            align="left"
+        >
+            Headline
+        </mj-text>
+
+        <mj-button
+            background-color="#f45e43"
+            color="white"
+            align="left"
+            border-radius="0px"
+            inner-padding="5px 10px"
+        >
+            Special headline with inline background
+        </mj-button>
+
         <mj-image src="_assets/560x330.jpg" />
 
         <mj-text>
