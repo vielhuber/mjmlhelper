@@ -8,11 +8,11 @@
     "ssl": "tls",
 
     "to": "to@tld.com",
-    "to": ["to@tld.com","to2@tld.com"],
+    "to": ["to@tld.com", "to2@tld.com"],
     "to": "list.txt",
 
     "images": false,
-    "images": "inline",    
+    "images": "inline",
     "images": "upload",
 
     "log": "log.txt",

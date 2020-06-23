@@ -1,8 +1,6 @@
 <mj-section>
-  <mj-column>
-
-    <!-- always provide an explicit link (otherwise outlook.com strips those tags) -->
-    <mj-button href="https://red.de">Button</mj-button>
-
-  </mj-column>
+    <mj-column>
+        <!-- always provide an explicit link (otherwise outlook.com strips those tags) -->
+        <mj-button href="https://red.de">Button</mj-button>
+    </mj-column>
 </mj-section>

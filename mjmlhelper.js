@@ -81,10 +81,7 @@ class mjmlhelper {
             ' .mce-tinymce-inline.mce-floatpanel { display:none !important; } ' +
             data.substring(pos);
         // hide modal overlay
-        data =
-            data.substring(0, pos) +
-            ' body.cred_modal:before { display: none !important; } ' +
-            data.substring(pos);
+        data = data.substring(0, pos) + ' body.cred_modal:before { display: none !important; } ' + data.substring(pos);
 
         // placeholders
         data = this.replaceAll(data, '%UNSUBSCRIBE%', '{UNSUBSCRIBE}');
@@ -140,10 +137,7 @@ class mjmlhelper {
             pos = data.indexOf(style_tag) + style_tag.length;
 
         // when replacing images in mailchimp, style="width:" is set to a fixed size. we prevent this with
-        data =
-            data.substring(0, pos) +
-            ' img { max-width:100%; height:auto !important; } ' +
-            data.substring(pos);
+        data = data.substring(0, pos) + ' img { max-width:100%; height:auto !important; } ' + data.substring(pos);
 
         // increase ordering icon
         // also there is a bug in mailchimp: when adding a new module and changing it's type, the ID is lost and the element cannot be moved; we fix this also here (we simply hide the move icon when the ID is missing)
@@ -183,10 +177,7 @@ class mjmlhelper {
                 end = data.indexOf('-->', begin) + '-->'.length,
                 begin_name = data.indexOf('"', positions__value + shift) + '"'.length,
                 end_name = data.indexOf('"', begin_name),
-                tag =
-                    '<div mc:repeatable="content" mc:variant="' +
-                    data.substring(begin_name, end_name) +
-                    '">';
+                tag = '<div mc:repeatable="content" mc:variant="' + data.substring(begin_name, end_name) + '">';
             if (positions__key > 0) {
                 tag = '</div>' + tag;
             }
@@ -249,9 +240,7 @@ class mjmlhelper {
         for (var i = 0; i <= 100; i++) {
             data = data
                 .split('.mj-column-per-' + i + ' { width:' + i + '% !important; }')
-                .join(
-                    '.mj-column-per-' + i + ' { width:' + i + '% !important;max-width:' + i + '%; }'
-                );
+                .join('.mj-column-per-' + i + ' { width:' + i + '% !important;max-width:' + i + '%; }');
         }
 
         // yahoo.com has a weird bug: when using google fonts, @import gets stripped out and the follow rule is killed; circumvent that
@@ -263,9 +252,7 @@ class mjmlhelper {
         // prevent times new roman on outlook <2016
         let pos = data.indexOf('font-family:');
         if (pos > -1) {
-            let font_family = data
-                .substring(pos + 'font-family:'.length, data.indexOf(';', pos))
-                .trim();
+            let font_family = data.substring(pos + 'font-family:'.length, data.indexOf(';', pos)).trim();
             // we have to do this exactly like this, because cleverreach merges together all styles and ignores mso
             data = data.replace(
                 '<style type="text/css">',
@@ -274,10 +261,7 @@ class mjmlhelper {
                     ', Arial, Helvetica, sans-serif !important; }</style>\n<style type="text/css">'
             );
             let pos2 = data.indexOf('>', data.indexOf('<body')) + '>'.length;
-            data =
-                data.substring(0, pos2) +
-                '<!--[if mso]><div class="outlook"><![endif]-->' +
-                data.substring(pos2);
+            data = data.substring(0, pos2) + '<!--[if mso]><div class="outlook"><![endif]-->' + data.substring(pos2);
             data = data.replace('</body>', '<!--[if mso]></div><![endif]--></body>');
         }
 
@@ -407,15 +391,9 @@ class mjmlhelper {
                     data.lastIndexOf("('", positions__value + 1) + 1
                 ) + 1;
             let end = Math.min(
-                data.indexOf('"', positions__value) > -1
-                    ? data.indexOf('"', positions__value)
-                    : data.length,
-                data.indexOf(')', positions__value) > -1
-                    ? data.indexOf(')', positions__value)
-                    : data.length,
-                data.indexOf("')", positions__value) > -1
-                    ? data.indexOf("')", positions__value)
-                    : data.length
+                data.indexOf('"', positions__value) > -1 ? data.indexOf('"', positions__value) : data.length,
+                data.indexOf(')', positions__value) > -1 ? data.indexOf(')', positions__value) : data.length,
+                data.indexOf("')", positions__value) > -1 ? data.indexOf("')", positions__value) : data.length
             );
             let image = data.substring(begin, end);
             filenames.push(image);
@@ -471,15 +449,10 @@ class mjmlhelper {
                         : message.html.length
                 );
                 let url = message.html.substring(begin, end);
-                if (
-                    url.indexOf('.jpg') === -1 &&
-                    url.indexOf('.gif') === -1 &&
-                    url.indexOf('.png') === -1
-                ) {
+                if (url.indexOf('.jpg') === -1 && url.indexOf('.gif') === -1 && url.indexOf('.png') === -1) {
                     return;
                 }
-                message.html =
-                    message.html.substring(0, begin) + cid_label + message.html.substring(end);
+                message.html = message.html.substring(0, begin) + cid_label + message.html.substring(end);
                 shift += cid_label.length - (end - begin);
                 message.attachments.push({
                     filename: url.trim(),

@@ -1,100 +1,91 @@
 <mjml owa="desktop">
-  <mj-head>
+    <mj-head>
+        <mj-title>%PREVIEWTEXT%</mj-title>
+        <mj-preview>%PREVIEWTEXT%</mj-preview>
 
-    <mj-title>%PREVIEWTEXT%</mj-title>
-    <mj-preview>%PREVIEWTEXT%</mj-preview>
+        <!-- set manual breakpoint (important for gmx/web.de mobile) -->
+        <mj-breakpoint width="480px" />
 
-    <!-- set manual breakpoint (important for gmx/web.de mobile) -->
-    <mj-breakpoint width="480px" />
+        <!-- custom fonts (only working for apple mail and iphone/ipad) -->
+        <mj-font name="Indie Flower" href="https://fonts.googleapis.com/css?family=Indie+Flower:400" />
+        <mj-style>
+            @font-face { font-family: 'Custom'; font-style: normal; font-weight: 400; src: url('_assets/font.woff2')
+            format('woff2'); }
+        </mj-style>
 
-    <!-- custom fonts (only working for apple mail and iphone/ipad) -->
-    <mj-font name="Indie Flower" href="https://fonts.googleapis.com/css?family=Indie+Flower:400" />
-    <mj-style>
-      @font-face {
-        font-family: 'Custom';
-        font-style: normal;
-        font-weight: 400;
-        src: url('_assets/font.woff2') format('woff2');
-      }
-    </mj-style>
+        <mj-attributes>
+            <!-- be careful: always provide a good fallback font for outlook, e.g. arial -->
+            <mj-all
+                padding="0"
+                font-family="'Indie Flower', Custom, Arial, sans-serif"
+                color="#333333"
+                align="center"
+                vertical-align="top"
+            />
+            <mj-body width="600px" background-color="#eee" />
+            <mj-wrapper padding="0px" background-color="transparent" />
+            <mj-section padding="20px" background-color="#ffffff" />
+            <mj-text font-size="16px" line-height="24px" font-weight="400" />
+            <mj-image width="560px" align="center" />
+            <mj-button
+                background-color="#1c58a0"
+                color="white"
+                font-size="14px"
+                align="center"
+                border="none"
+                border-radius="5px"
+                font-weight="bold"
+            />
+            <mj-divider border-width="1px" border-style="solid" border-color="#d3d3d3" />
+            <mj-class name="big" font-size="18px" />
+            <mj-class name="small" font-size="12px" />
+            <mj-class name="smallest" font-size="9px" line-height="13px" />
+            <mj-class name="strong" font-weight="bold" />
+        </mj-attributes>
+        <mj-style>
+            @media all and (max-width: 500px) { .mobile-hidden { display: none !important; } } a { color: #333333;
+            text-decoration: none; border: none; }
+        </mj-style>
+        <mj-style inline="inline">
+            .link-nostyle { color: #333333; text-decoration: none; border: none; } .box-shadow { box-shadow: 0px 0px
+            30px 0px #cecece; }
+        </mj-style>
+    </mj-head>
+    <mj-body>
+        <mj-include path="_inc/responsive.mjml" />
 
-    <mj-attributes>
-      <!-- be careful: always provide a good fallback font for outlook, e.g. arial -->
-      <mj-all padding="0" font-family="'Indie Flower', Custom, Arial, sans-serif" color="#333333" align="center" vertical-align="top" />
-      <mj-body width="600px" background-color="#eee" />
-      <mj-wrapper padding="0px" background-color="transparent" />
-      <mj-section padding="20px" background-color="#ffffff" />
-      <mj-text font-size="16px" line-height="24px" font-weight="400" />
-      <mj-image width="560px" align="center" />
-      <mj-button background-color="#1c58a0" color="white" font-size="14px" align="center" border="none" border-radius="5px" font-weight="bold" />
-      <mj-divider border-width="1px" border-style="solid" border-color="#d3d3d3" />
-      <mj-class name="big" font-size="18px" />
-      <mj-class name="small" font-size="12px" />
-      <mj-class name="smallest" font-size="9px" line-height="13px" />
-      <mj-class name="strong" font-weight="bold" />
-    </mj-attributes>
-    <mj-style>
-      @media all and (max-width: 500px) {
-        .mobile-hidden {
-          display: none !important;
-        }
-      }
+        <mj-wrapper>
+            <mj-include path="_inc/top.mjml" />
+        </mj-wrapper>
 
-      a {
-        color: #333333;
-        text-decoration: none;
-        border: none;
-      }
-    </mj-style>
-    <mj-style inline="inline">
-      .link-nostyle {
-        color: #333333;
-        text-decoration: none;
-        border: none;
-      }
+        <mj-wrapper css-class="box-shadow">
+            <!-- flexibles -->
+            <!-- flexible="Simple" -->
+            <mj-include path="_inc/simple.mjml" />
+            <!-- flexible="Button" -->
+            <mj-include path="_inc/button.mjml" />
+            <!-- flexible="Divider" -->
+            <mj-include path="_inc/divider.mjml" />
+            <!-- flexible="Columns" -->
+            <mj-include path="_inc/columns.mjml" />
+            <!-- flexible="Two Col Left" -->
+            <mj-include path="_inc/two-col-left.mjml" />
+            <!-- flexible="Two Col Right" -->
+            <mj-include path="_inc/two-col-right.mjml" />
+            <!-- flexible="Two Col Left" -->
+            <mj-include path="_inc/two-col-left.mjml" />
+            <!-- flexible="Two Col Right" -->
+            <mj-include path="_inc/two-col-right.mjml" />
+            <!-- flexible="Simple" -->
+            <mj-include path="_inc/simple.mjml" />
+            <!-- flexible="Columns Inline" -->
+            <mj-include path="_inc/columns-inline.mjml" />
+            <!-- /flexibles -->
+            <mj-include path="_inc/simple.mjml" />
+        </mj-wrapper>
 
-      .box-shadow {
-        box-shadow: 0px 0px 30px 0px #cecece;
-      }
-    </mj-style>
-  </mj-head>
-  <mj-body>
-
-    <mj-include path="_inc/responsive.mjml" />
-
-    <mj-wrapper>
-      <mj-include path="_inc/top.mjml" />
-    </mj-wrapper>
-
-    <mj-wrapper css-class="box-shadow">
-      <!-- flexibles -->
-      <!-- flexible="Simple" -->
-      <mj-include path="_inc/simple.mjml" />
-      <!-- flexible="Button" -->
-      <mj-include path="_inc/button.mjml" />
-      <!-- flexible="Divider" -->
-      <mj-include path="_inc/divider.mjml" />
-      <!-- flexible="Columns" -->
-      <mj-include path="_inc/columns.mjml" />
-      <!-- flexible="Two Col Left" -->
-      <mj-include path="_inc/two-col-left.mjml" />
-      <!-- flexible="Two Col Right" -->
-      <mj-include path="_inc/two-col-right.mjml" />
-      <!-- flexible="Two Col Left" -->
-      <mj-include path="_inc/two-col-left.mjml" />
-      <!-- flexible="Two Col Right" -->
-      <mj-include path="_inc/two-col-right.mjml" />
-      <!-- flexible="Simple" -->
-      <mj-include path="_inc/simple.mjml" />
-      <!-- flexible="Columns Inline" -->
-      <mj-include path="_inc/columns-inline.mjml" />
-      <!-- /flexibles -->
-      <mj-include path="_inc/simple.mjml" />
-    </mj-wrapper>
-
-    <mj-wrapper>
-      <mj-include path="_inc/bottom.mjml" />
-    </mj-wrapper>
-
-  </mj-body>
+        <mj-wrapper>
+            <mj-include path="_inc/bottom.mjml" />
+        </mj-wrapper>
+    </mj-body>
 </mjml>

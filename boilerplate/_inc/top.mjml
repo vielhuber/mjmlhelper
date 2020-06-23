@@ -1,7 +1,8 @@
 <mj-section background-color="transparent">
-  <mj-column>
-    <mj-text mj-class="small strong">
-      Wird der Newsletter nicht richtig angezeigt? Dann bitte <a class="link-nostyle" href="%WEBVERSION%" target="_blank">hier klicken</a>.
-    </mj-text>
-  </mj-column>
+    <mj-column>
+        <mj-text mj-class="small strong">
+            Wird der Newsletter nicht richtig angezeigt? Dann bitte
+            <a class="link-nostyle" href="%WEBVERSION%" target="_blank">hier klicken</a>.
+        </mj-text>
+    </mj-column>
 </mj-section>

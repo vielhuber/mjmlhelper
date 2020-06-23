@@ -1,24 +1,26 @@
 {
-  "name": "mjmlhelper",
-  "version": "2.0.0",
-  "description": "",
-  "main": "mjmlhelper.js",
-  "dependencies": {
-    "archiver": "^3.1.1",
-    "cli-error-notifier": "^2.1.0",
-    "fs-extra": "^8.1.0",
-    "ftp": "^0.3.10",
-    "jsdom": "^15.2.0",
-    "mjml": "^4.5.1",
-    "nodemailer": "^6.3.1",
-    "npm": "^6.12.0",
-    "onchange": "^6.1.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "David Vielhuber <david@vielhuber.de>",
-  "license": "ISC"
+    "name": "mjmlhelper",
+    "version": "2.0.1",
+    "description": "",
+    "main": "mjmlhelper.js",
+    "dependencies": {
+        "@prettier/plugin-php": "^0.14.2",
+        "archiver": "^3.1.1",
+        "cli-error-notifier": "^2.1.0",
+        "fs-extra": "^8.1.0",
+        "ftp": "^0.3.10",
+        "jsdom": "^15.2.0",
+        "mjml": "^4.5.1",
+        "nodemailer": "^6.3.1",
+        "npm": "^6.12.0",
+        "onchange": "^6.1.0",
+        "prettier": "^2.0.5"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "David Vielhuber <david@vielhuber.de>",
+    "license": "ISC"
 }
