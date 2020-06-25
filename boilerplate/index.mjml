@@ -58,7 +58,7 @@
             <mj-include path="_inc/top.mjml" />
         </mj-wrapper>
 
-        <mj-wrapper css-class="box-shadow">
+        <mj-wrapper css-class="box-shadow" background-color="#ffffff">
             <!-- flexibles -->
             <!-- flexible="Simple" -->
             <mj-include path="_inc/simple.mjml" />
