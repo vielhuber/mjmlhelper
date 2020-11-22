@@ -126,6 +126,9 @@ class mjmlhelper {
             data = data.substring(0, end) + '<!--#/html#-->' + data.substring(end);
             shift += '<!--#html #-->'.length + '<!--#/html#-->'.length;
         });
+        // prevent nested html tags (cleverreach has problems with that)
+        data = data.replace(/(<!--#html #-->)(((?!<!--#\/html#-->).)*(<!--#html #-->))/gs,'$2');
+        data = data.replace(/((<!--#\/html#-->)((?!<!--#html #-->).)*)(<!--#\/html#-->)/gs,'$1');
 
         return data;
     }
