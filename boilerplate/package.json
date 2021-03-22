@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "setup": "mv example.mjmlhelper.json mjmlhelper.json && mv example.gitignore .gitignore",
-        "watch": "onchange ./*.mjml ./**/*.mjml --initial --wait --delay 100 --await-write-finish 200 -- onerror \"npm run build\" --title \"watch\" --message \"build failed\" --sound mute",
+        "watch": "onchange ./*.mjml ./**/*.mjml --initial --poll 50 --delay 0 --await-write-finish 50 -- onerror \"npm run build\" --title \"watch\" --message \"build failed\" --sound mute",
         "build": "node ./node_modules/mjmlhelper/mjmlhelper.js build",
         "mail": "node ./node_modules/mjmlhelper/mjmlhelper.js mail",
         "cleverreach": "node ./node_modules/mjmlhelper/mjmlhelper.js cleverreach",
