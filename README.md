@@ -11,6 +11,7 @@ it also includes a small boilerplate and some nifty updates for mjml.
 ## installation
 
 ```
+npm init -y
 npm install mjmlhelper
 ```
 
