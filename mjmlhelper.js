@@ -105,7 +105,10 @@ class mjmlhelper {
         });
 
         // first and last tag
-        positions = this.findAllPositions(' mj-outlook-group-fix', data);
+        positions = this.findAllPositions(' mj-outlook-group-fix', data).concat(
+                    this.findAllPositions('mj-hero-content', data).concat(
+                    []));
+        positions.sort();
         shift = 0;
         positions.forEach(positions__value => {
             let begin = data.indexOf('>', positions__value + shift) + '>'.length,
