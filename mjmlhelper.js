@@ -82,6 +82,8 @@ class mjmlhelper {
             data.substring(pos);
         // hide modal overlay
         data = data.substring(0, pos) + ' body.cred_modal:before { display: none !important; } ' + data.substring(pos);
+        // fix font size 0 problem (https://github.com/vielhuber/mjmlhelper/issues/1)
+        data = data.substring(0, pos) + ' .mce-content-body { font-size: 13px; } ' + data.substring(pos);
 
         // placeholders
         data = this.replaceAll(data, '%UNSUBSCRIBE%', '{UNSUBSCRIBE}');
