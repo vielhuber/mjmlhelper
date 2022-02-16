@@ -110,7 +110,7 @@ class mjmlhelper {
         positions = this.findAllPositions(' mj-outlook-group-fix', data).concat(
                     this.findAllPositions('mj-hero-content', data).concat(
                     []));
-        positions.sort();
+        positions.sort((a, b) => { return a-b; });
         shift = 0;
         positions.forEach(positions__value => {
             let begin = data.indexOf('>', positions__value + shift) + '>'.length,
