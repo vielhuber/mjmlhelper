@@ -144,6 +144,12 @@ class mjmlhelper {
             style_tag = '<style type="text/css">',
             pos = data.indexOf(style_tag) + style_tag.length;
 
+        // mailchimp has problems with external fonts: when embedding google fonts, we get the error
+        // "An error occurred parsing your template CSS: Cannot find a CSS file at: https://fonts.googleapis.com/css?family=Tinos:400"
+        // see: https://github.com/sendwithus/templates/issues/21
+        // we strip out all occurences of @import (<link href="https://fonts.googleapis.com/..."> is still left behind)
+        data = data.replace(/@import url\(https:\/\/fonts.googleapis.com.*\);/g, '');
+
         // when replacing images in mailchimp, style="width:" is set to a fixed size. we prevent this with
         data = data.substring(0, pos) + ' img { max-width:100%; height:auto !important; } ' + data.substring(pos);
 
