@@ -84,7 +84,26 @@ class mjmlhelper {
         data = data.substring(0, pos) + ' body.cred_modal:before { display: none !important; } ' + data.substring(pos);
         // fix font size 0 problem (https://github.com/vielhuber/mjmlhelper/issues/1)
         data = data.substring(0, pos) + ' .mce-content-body { font-size: 13px; } ' + data.substring(pos);
-
+        // fix problem where img sizes get overwritten
+        data = data.substring(0, pos) + ' .preserve-cr-full-size { width:100% !important; height:auto !important; } ' + data.substring(pos);
+        positions = this.findAllPositions('<img', data);
+        shift = 0;
+        positions.forEach(positions__value => {
+            let begin = positions__value + shift,
+                end = data.indexOf('>', begin) + '>'.length,
+                tag = data.substring(begin, end);
+            if( tag.indexOf('width:100%') > -1 ) {
+                if( tag.indexOf('class="') > -1 ) {
+                    data = data.substring(0, begin) + tag.replace('class="', 'class="preserve-cr-full-size ') + data.substring(end);
+                    shift += 'class="preserve-cr-full-size '.length - 'class="'.length;
+                }
+                else {
+                    data = data.substring(0, begin) + tag.replace('<img ', '<img class="preserve-cr-full-size" ') + data.substring(end);
+                    shift += '<img class="preserve-cr-full-size" '.length - '<img '.length;
+                }
+            }
+        });
+        
         // placeholders
         data = this.replaceAll(data, '%UNSUBSCRIBE%', '{UNSUBSCRIBE}');
         data = this.replaceAll(data, '%WEBVERSION%', '{ONLINE_VERSION}');
