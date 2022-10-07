@@ -57,5 +57,14 @@
                 text-align: center !important;
             }
         }
+        /* more aggressive (disabled) */
+        /*
+        @media only screen and (max-width: 500px) {
+            *[style*='text-align:left'],
+            *[style*='text-align: left'] {
+                text-align: center !important;
+            }
+        }
+        */
     </style>
 </mj-raw>
