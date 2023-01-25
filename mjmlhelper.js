@@ -75,6 +75,11 @@ class mjmlhelper {
             data.substring(0, pos) +
             ' body[spellcheck="false"] > div:first-child, body[spellcheck="false"] > div:first-child + div { max-width:600px;margin:0 auto; } ' +
             data.substring(pos);
+        // move inline wysiwyg overlay to bottom
+        data =
+            data.substring(0, pos) +
+            ' .tox-editor-header[style*="top: 0px"] { top:auto !important; bottom:0 !important; } ' +
+            data.substring(pos);
         // hide tinymce overlay that always goes in the way
         data =
             data.substring(0, pos) +

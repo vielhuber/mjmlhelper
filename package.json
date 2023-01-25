@@ -1,6 +1,6 @@
 {
     "name": "mjmlhelper",
-    "version": "2.1.2",
+    "version": "2.1.4",
     "description": "",
     "main": "mjmlhelper.js",
     "dependencies": {
