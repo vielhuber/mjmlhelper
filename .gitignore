@@ -1,6 +1,7 @@
 *
 !.gitignore
 !package.json
+!.nvmrc
 !/boilerplate/
 !/boilerplate/*
 /boilerplate/index-converted.html
