@@ -166,25 +166,30 @@ class mjmlhelper {
         let positions,
             shift,
             style_tag = '<style type="text/css">',
-            pos = data.indexOf(style_tag) + style_tag.length;
+            pos = null;
 
         // mailchimp has problems with external fonts: when embedding google fonts, we get the error
         // "An error occurred parsing your template CSS: Cannot find a CSS file at: https://fonts.googleapis.com/css?family=Tinos:400"
         // see: https://github.com/sendwithus/templates/issues/21
         // we strip out all occurences of @import (<link href="https://fonts.googleapis.com/..."> is still left behind)
-        data = data.replace(/@import url\(https:\/\/fonts.googleapis.com.*\);/g, '');
+        pos = data.indexOf(style_tag) + style_tag.length;
+        data = data.replace(/@import url\(https:\/\/fonts\.googleapis\.com.*?\);/g, '');
 
         // when replacing images in mailchimp, style="width:" is set to a fixed size. we prevent this with
+        pos = data.indexOf(style_tag) + style_tag.length;
         data = data.substring(0, pos) + ' img { max-width:100%; height:auto !important; } ' + data.substring(pos);
+
 
         // increase ordering icon
         // also there is a bug in mailchimp: when adding a new module and changing it's type, the ID is lost and the element cannot be moved; we fix this also here (we simply hide the move icon when the ID is missing)
+        pos = data.indexOf(style_tag) + style_tag.length;
         data =
             data.substring(0, pos) +
             ' .tpl-repeatmovewrap>.tpl-repeatmove { background-color: #fff !important; top: -10px !important; left: -20px !important; width: 100px !important; height: 50px !important; border:2px solid grey !important; background-position:center !important; display:none !important; } div[mcrepeatable][id] .tpl-repeatmovewrap>.tpl-repeatmove { display: block !important; } ' +
             data.substring(pos);
 
         // remove hide icon
+        pos = data.indexOf(style_tag) + style_tag.length;
         data =
             data.substring(0, pos) +
             ' .tpl-repeatwrap.can-hide .tpl-hidetoggle { display:none !important; } ' +
