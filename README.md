@@ -4,7 +4,7 @@ mjmlhelper is a little toolbox for [mjml](https://mjml.io/) (v4.X) that...
 
 -   sends mails from the command line for testing and production,
 -   automatically inlines or uploads images for testing purposes,
--   converts your template to the drag&drop editors of [CleverReach](https://www.cleverreach.com) and [Mailchimp](https://mailchimp.com).
+-   converts your template to the newest drag&drop editors of [CleverReach](https://www.cleverreach.com) and [Mailchimp](https://mailchimp.com).
 
 it also includes a small boilerplate and some nifty updates for mjml.
 
