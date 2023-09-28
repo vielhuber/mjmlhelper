@@ -112,3 +112,9 @@ npm run mailchimp
 -   `*|UNSUB|*`
 -   `*|ARCHIVE|*`
 -   `*|MC_PREVIEW_TEXT|*`
+
+## notes
+
+### mailchimp
+
+creating mailchimp emails in their classic editor can be a bit tedious. a first block is created by default and you can create more blocks by duplicating the first one and choosing another variant. if there is only one block left, it cannot be deleted.
