@@ -81,6 +81,8 @@
             <!-- flexible="Columns Inline" -->
             <mj-include path="_inc/columns-inline.mjml" />
             <!-- /flexibles -->
+
+            <!-- this is intentionally not a flexible (just to test) -->
             <mj-include path="_inc/simple.mjml" />
         </mj-wrapper>
 
