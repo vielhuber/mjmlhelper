@@ -8,9 +8,14 @@
 
         <!-- custom fonts (only working for apple mail and iphone/ipad) -->
         <mj-font name="Indie Flower" href="https://fonts.googleapis.com/css?family=Indie+Flower:400" />
+        <!-- prettier-ignore -->
         <mj-style>
-            @font-face { font-family: 'Custom'; font-style: normal; font-weight: 400; src: url('_assets/font.woff2')
-            format('woff2'); }
+            @font-face {
+                font-family: 'Custom';
+                font-style: normal;
+                font-weight: 400;
+                src: url('_assets/font.woff2') format('woff2');
+            }
         </mj-style>
 
         <mj-attributes>
@@ -42,13 +47,28 @@
             <mj-class name="smallest" font-size="9px" line-height="13px" />
             <mj-class name="strong" font-weight="bold" />
         </mj-attributes>
+        <!-- prettier-ignore -->
         <mj-style>
-            @media all and (max-width: 500px) { .mobile-hidden { display: none !important; } } a { color: #333333;
-            text-decoration: none; border: none; }
+            @media all and (max-width: 500px) {
+                .mobile-hidden { display: none !important; }
+            }
+            a {
+                color: #333333;
+                text-decoration: none;
+                border: none;
+            }
+            .hover:hover td, .hover a:hover, .hover p:hover {
+                background-color:#00E18E !important;
+            }
         </mj-style>
+        <!-- prettier-ignore -->
         <mj-style inline="inline">
-            .link-nostyle { color: #333333; text-decoration: none; border: none; } .box-shadow { box-shadow: 0px 0px
-            30px 0px #cecece; }
+            .link-nostyle {
+                color: #333333; text-decoration: none; border: none;
+            }
+            .box-shadow {
+                box-shadow: 0px 0px 30px 0px #cecece;
+            }
         </mj-style>
     </mj-head>
     <mj-body>

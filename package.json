@@ -1,6 +1,6 @@
 {
     "name": "mjmlhelper",
-    "version": "2.2.3",
+    "version": "2.2.4",
     "description": "",
     "main": "mjmlhelper.js",
     "dependencies": {
@@ -12,7 +12,7 @@
         "jsdom": "^22.1.0",
         "mjml": "^4.14.1",
         "nodemailer": "^6.9.5",
-        "npm": "^10.0.0",
+        "npm": "^10.2.0",
         "onchange": "^7.1.0",
         "prettier": "^3.0.3"
     },
