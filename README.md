@@ -118,3 +118,5 @@ npm run mailchimp
 ### mailchimp
 
 creating mailchimp emails in their classic editor can be a bit tedious. a first block is created by default and you can only create more blocks by duplicating the first one and choosing any other variant. if there is only one block left, it cannot be deleted.
+
+images must be sized (width is crucial) exactly as mentionned in the image edit mask (Content Studio).

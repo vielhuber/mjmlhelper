@@ -90,25 +90,33 @@ class mjmlhelper {
         // fix font size 0 problem (https://github.com/vielhuber/mjmlhelper/issues/1)
         data = data.substring(0, pos) + ' .mce-content-body { font-size: 13px; } ' + data.substring(pos);
         // fix problem where img sizes get overwritten
-        data = data.substring(0, pos) + ' .preserve-cr-full-size { width:100% !important; height:auto !important; } ' + data.substring(pos);
+        data =
+            data.substring(0, pos) +
+            ' .preserve-cr-full-size { width:100% !important; height:auto !important; } ' +
+            data.substring(pos);
         positions = this.findAllPositions('<img', data);
         shift = 0;
         positions.forEach(positions__value => {
             let begin = positions__value + shift,
                 end = data.indexOf('>', begin) + '>'.length,
                 tag = data.substring(begin, end);
-            if( tag.indexOf('width:100%') > -1 ) {
-                if( tag.indexOf('class="') > -1 ) {
-                    data = data.substring(0, begin) + tag.replace('class="', 'class="preserve-cr-full-size ') + data.substring(end);
+            if (tag.indexOf('width:100%') > -1) {
+                if (tag.indexOf('class="') > -1) {
+                    data =
+                        data.substring(0, begin) +
+                        tag.replace('class="', 'class="preserve-cr-full-size ') +
+                        data.substring(end);
                     shift += 'class="preserve-cr-full-size '.length - 'class="'.length;
-                }
-                else {
-                    data = data.substring(0, begin) + tag.replace('<img ', '<img class="preserve-cr-full-size" ') + data.substring(end);
+                } else {
+                    data =
+                        data.substring(0, begin) +
+                        tag.replace('<img ', '<img class="preserve-cr-full-size" ') +
+                        data.substring(end);
                     shift += '<img class="preserve-cr-full-size" '.length - '<img '.length;
                 }
             }
         });
-        
+
         // placeholders
         data = this.replaceAll(data, '%UNSUBSCRIBE%', '{UNSUBSCRIBE}');
         data = this.replaceAll(data, '%WEBVERSION%', '{ONLINE_VERSION}');
@@ -132,9 +140,11 @@ class mjmlhelper {
 
         // first and last tag
         positions = this.findAllPositions(' mj-outlook-group-fix', data).concat(
-                    this.findAllPositions('mj-hero-content', data).concat(
-                    []));
-        positions.sort((a, b) => { return a-b; });
+            this.findAllPositions('mj-hero-content', data).concat([])
+        );
+        positions.sort((a, b) => {
+            return a - b;
+        });
         shift = 0;
         positions.forEach(positions__value => {
             let begin = data.indexOf('>', positions__value + shift) + '>'.length,
@@ -156,8 +166,8 @@ class mjmlhelper {
             shift += '<!--#html #-->'.length + '<!--#/html#-->'.length;
         });
         // prevent nested html tags (cleverreach has problems with that)
-        data = data.replace(/(<!--#html #-->)(((?!<!--#\/html#-->).)*(<!--#html #-->))/gs,'$2');
-        data = data.replace(/((<!--#\/html#-->)((?!<!--#html #-->).)*)(<!--#\/html#-->)/gs,'$1');
+        data = data.replace(/(<!--#html #-->)(((?!<!--#\/html#-->).)*(<!--#html #-->))/gs, '$2');
+        data = data.replace(/((<!--#\/html#-->)((?!<!--#html #-->).)*)(<!--#\/html#-->)/gs, '$1');
 
         return data;
     }
@@ -179,13 +189,29 @@ class mjmlhelper {
         pos = data.indexOf(style_tag) + style_tag.length;
         data = data.substring(0, pos) + ' img { max-width:100%; height:auto !important; } ' + data.substring(pos);
 
-
         // increase ordering icon
         // also there is a bug in mailchimp: when adding a new module and changing it's type, the ID is lost and the element cannot be moved; we fix this also here (we simply hide the move icon when the ID is missing)
         pos = data.indexOf(style_tag) + style_tag.length;
         data =
             data.substring(0, pos) +
-            ' .tpl-repeatmovewrap>.tpl-repeatmove { background-color: #fff !important; top: -10px !important; left: -20px !important; width: 100px !important; height: 50px !important; border:2px solid grey !important; background-position:center !important; display:none !important; } div[mcrepeatable][id] .tpl-repeatmovewrap>.tpl-repeatmove { display: block !important; } ' +
+            `
+            .extra-controls .tpl-repeatwrap {
+                transform: translateX(-100%) translateY(-50px) !important;
+                border: 2px solid grey !important;
+            }
+            .tpl-repeatmovewrap > .tpl-repeatmove {
+                background-color: #fff !important;
+                width: 100px !important;
+                height: 50px !important;
+                border: 2px solid grey !important;
+                background-position: center !important;
+                transform: translateX(-95px) translateY(-20px) !important;
+                display: none !important;
+            }
+            div[mcrepeatable][id] .tpl-repeatmovewrap > .tpl-repeatmove {
+                display: block !important;
+            }
+            ` +
             data.substring(pos);
 
         // remove hide icon
