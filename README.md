@@ -1,3 +1,10 @@
+[![GitHub Tag](https://img.shields.io/github/v/tag/vielhuber/mjmlhelper)](https://github.com/vielhuber/mjmlhelper/tags)
+[![Code Style](https://img.shields.io/badge/code_style-psr--12-ff69b4.svg)](https://www.php-fig.org/psr/psr-12/)
+[![License](https://img.shields.io/github/license/vielhuber/mjmlhelper)](https://github.com/vielhuber/mjmlhelper/blob/main/LICENSE.md)
+[![Last Commit](https://img.shields.io/github/last-commit/vielhuber/mjmlhelper)](https://github.com/vielhuber/mjmlhelper/commits)
+[![node version](https://img.shields.io/node/v/mjmlhelper)](https://www.npmjs.com/package/mjmlhelper)
+[![npm Downloads](https://img.shields.io/npm/dt/mjmlhelper)](https://www.npmjs.com/package/mjmlhelper)
+
 # 🌈 mjmlhelper 🌈
 
 mjmlhelper is a little toolbox for [mjml](https://mjml.io/) (v4.X) that...

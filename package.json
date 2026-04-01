@@ -1,6 +1,6 @@
 {
     "name": "mjmlhelper",
-    "version": "2.2.6",
+    "version": "2.2.7",
     "description": "",
     "main": "mjmlhelper.js",
     "dependencies": {
@@ -22,5 +22,12 @@
     },
     "keywords": [],
     "author": "David Vielhuber <david@vielhuber.de>",
-    "license": "ISC"
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/vielhuber/mjmlhelper.git"
+    },
+    "engines": {
+        "node": ">=18"
+    }
 }
