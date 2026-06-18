@@ -11,10 +11,14 @@
         "ftp": "^0.3.10",
         "jsdom": "^29.1.1",
         "mjml": "^5.2.2",
-        "nodemailer": "^8.0.7",
-        "npm": "^11.15.0",
+        "nodemailer": "^8.0.11",
+        "npm": "^11.17.0",
         "onchange": "^7.1.0",
         "prettier": "^3.8.3"
+    },
+    "overrides": {
+        "js-yaml": "^4.2.0",
+        "uuid": "^11.1.1"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

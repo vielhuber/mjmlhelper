@@ -16,5 +16,9 @@
     "license": "ISC",
     "dependencies": {
         "mjmlhelper": "*"
+    },
+    "overrides": {
+        "js-yaml": "^4.2.0",
+        "uuid": "^11.1.1"
     }
 }
