@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/github/license/vielhuber/mjmlhelper)](https://github.com/vielhuber/mjmlhelper/blob/main/LICENSE.md)
 [![Last Commit](https://img.shields.io/github/last-commit/vielhuber/mjmlhelper)](https://github.com/vielhuber/mjmlhelper/commits)
 [![node version](https://img.shields.io/node/v/mjmlhelper)](https://www.npmjs.com/package/mjmlhelper)
+[![npm Version](https://img.shields.io/npm/v/mjmlhelper)](https://www.npmjs.com/package/mjmlhelper)
 [![npm Downloads](https://img.shields.io/npm/dt/mjmlhelper)](https://www.npmjs.com/package/mjmlhelper)
 
 # 🌈 mjmlhelper 🌈
