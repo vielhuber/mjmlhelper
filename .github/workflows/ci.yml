@@ -31,12 +31,11 @@ jobs:
             - name: NPM
               run: npm install
 
-            - name: Version
-              run: npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version --allow-same-version
+            - name: Verify version
+              run: test "$(node -p "require('./package.json').version")" = "${GITHUB_REF_NAME#v}"
 
             - name: Build
               run: npm run prod --if-present
 
             - name: Publish
               run: npm publish
-
