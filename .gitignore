@@ -2,6 +2,9 @@
 !.gitignore
 !package.json
 !.nvmrc
+!/.github/
+!/.github/workflows/
+!/.github/workflows/ci.yml
 !/boilerplate/
 !/boilerplate/*
 /boilerplate/index-converted.html
