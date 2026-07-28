@@ -10,7 +10,7 @@ class mjmlhelper {
         if (!fs.existsSync('./node_modules')) {
             path = '..';
         }
-        execSync('node ' + path + '/node_modules/mjml/bin/mjml index.mjml -o index.html');
+        execSync('node ' + path + '/node_modules/mjml/bin/mjml index.mjml -o index.html --config.allowIncludes true');
     }
 
     static runMjmlAfterwork(type) {

@@ -1,22 +1,22 @@
 {
     "name": "mjmlhelper",
-    "version": "2.3.4",
+    "version": "2.3.5",
     "description": "",
     "main": "mjmlhelper.js",
     "dependencies": {
         "@prettier/plugin-php": "^0.25.0",
         "archiver": "^8.0.0",
         "cli-error-notifier": "^3.0.2",
-        "fs-extra": "^11.3.6",
+        "fs-extra": "^11.4.0",
         "ftp": "^0.3.10",
-        "jsdom": "^29.1.1",
+        "jsdom": "^30.0.0",
         "mjml": "^5.4.0",
         "nodemailer": "^9.0.3",
-        "npm": "^12.0.1",
         "onchange": "^7.1.0",
-        "prettier": "^3.9.5"
+        "prettier": "^3.9.6"
     },
     "overrides": {
+        "js-beautify": "^2.0.3",
         "js-yaml": "^4.2.0",
         "uuid": "^11.1.1"
     },
@@ -31,6 +31,6 @@
         "url": "git+ssh://git@github.com/vielhuber/mjmlhelper.git"
     },
     "engines": {
-        "node": ">=18"
+        "node": ">=20"
     }
 }
