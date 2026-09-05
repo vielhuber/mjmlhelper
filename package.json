@@ -1,6 +1,6 @@
 {
     "name": "mjmlhelper",
-    "version": "2.3.5",
+    "version": "2.3.6",
     "description": "",
     "main": "mjmlhelper.js",
     "dependencies": {
@@ -9,9 +9,9 @@
         "cli-error-notifier": "^3.0.2",
         "fs-extra": "^11.4.0",
         "ftp": "^0.3.10",
-        "jsdom": "^30.0.0",
+        "jsdom": "^30.0.1",
         "mjml": "^5.4.0",
-        "nodemailer": "^9.0.3",
+        "nodemailer": "^10.0.0",
         "onchange": "^7.1.0",
         "prettier": "^3.9.6"
     },
