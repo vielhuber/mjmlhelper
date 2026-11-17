@@ -18,6 +18,7 @@
         "mjmlhelper": "*"
     },
     "overrides": {
+        "glob": "^14.0.6",
         "js-beautify": "^2.0.3",
         "js-yaml": "^4.2.0",
         "uuid": "^11.1.1"
